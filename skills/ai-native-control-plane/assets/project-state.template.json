@@ -1,0 +1,19 @@
+{
+  "schema_version": "3.0.0",
+  "project_id": "PROJECT-EXAMPLE",
+  "state_version": "0.1.0",
+  "accepted_decisions": [],
+  "evidence_register": [],
+  "open_questions": [
+    {
+      "question_id": "Q-001",
+      "question": "Which evidence would most change the next decision?",
+      "owner": "human_decision_owner"
+    }
+  ],
+  "risk_register": [],
+  "authority_grants": [],
+  "learning_events": [],
+  "latest_task_ids": [],
+  "state_write_authorization": "not_authorized"
+}

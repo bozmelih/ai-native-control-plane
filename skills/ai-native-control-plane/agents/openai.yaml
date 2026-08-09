@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI-Native Control Plane"
+  short_description: "Risk-aware dynamic reasoning for decision work."
+  default_prompt: "Use $ai-native-control-plane to classify this task, assemble only needed context and capability packs, then return a decision-ready plan with authority gates."

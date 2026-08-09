@@ -1,0 +1,97 @@
+{
+  "schema_version": "3.0.0",
+  "system": "ai-native-control-plane",
+  "architecture_layers": [
+    "durable_state",
+    "control_plane",
+    "temporary_cognition_graph",
+    "optional_execution_interface"
+  ],
+  "invariants": {
+    "human_authority_is_explicit": true,
+    "persona_is_required": false,
+    "persona_grants_authority": false,
+    "task_graph_is_ephemeral_by_default": true,
+    "confidence_is_evidence": false,
+    "implicit_state_write_allowed": false,
+    "implicit_external_action_allowed": false,
+    "validator_pass_is_human_approval": false,
+    "acceptance_is_execution_authorization": false,
+    "compute_route_grants_authority": false,
+    "earned_autonomy_is_scoped_expiring_and_revocable": true
+  },
+  "task_classes": [
+    "answer",
+    "diagnosis",
+    "decision",
+    "design",
+    "research",
+    "review",
+    "implementation",
+    "operation",
+    "incident"
+  ],
+  "decision_types": [
+    "none",
+    "reversible",
+    "bounded_commitment",
+    "irreversible_or_regulated"
+  ],
+  "risk_tiers": ["low", "medium", "high", "critical"],
+  "compute_routes": ["light", "standard", "high", "maximum"],
+  "evidence_classes": [
+    "verified_fact",
+    "user_confirmed",
+    "primary_source",
+    "secondary_source",
+    "analysis",
+    "hypothesis",
+    "assumption",
+    "unknown",
+    "conflicting"
+  ],
+  "method_packs": [
+    "problem-framing",
+    "evidence",
+    "hypothesis-led",
+    "MECE",
+    "causal",
+    "workflow",
+    "behavioral",
+    "financial",
+    "scenario",
+    "prioritization",
+    "red-team",
+    "synthesis"
+  ],
+  "domain_packs": [
+    "general",
+    "product",
+    "growth",
+    "operations",
+    "finance",
+    "security",
+    "privacy",
+    "legal",
+    "health",
+    "education"
+  ],
+  "output_modes": ["working-note", "decision-packet", "executive-brief", "handoff"],
+  "authority_gates": [
+    "research",
+    "recommendation",
+    "human_decision",
+    "implementation_authorization",
+    "controlled_test_authorization",
+    "operation_authorization",
+    "publication_authorization",
+    "external_action_authorization",
+    "system_write_authorization"
+  ],
+  "risk_requirements": {
+    "low": {"minimum_compute": "light", "human_decision_required": false, "red_team_required": false},
+    "medium": {"minimum_compute": "standard", "human_decision_required": true, "red_team_required": false},
+    "high": {"minimum_compute": "high", "human_decision_required": true, "red_team_required": true},
+    "critical": {"minimum_compute": "maximum", "human_decision_required": true, "red_team_required": true}
+  }
+}

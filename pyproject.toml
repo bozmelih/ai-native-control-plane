@@ -1,0 +1,9 @@
+[project]
+name = "ai-native-control-plane"
+version = "3.0.0"
+description = "A stateful, risk-adaptive control-plane skill for AI-native work."
+requires-python = ">=3.10"
+
+[tool.unittest]
+start-directory = "tests"
+pattern = "test_*.py"

@@ -1,0 +1,14 @@
+{
+  "schema_version": "3.0.0",
+  "grant_id": "GRANT-EXAMPLE-001",
+  "status": "proposed",
+  "scope": "Draft internal, reversible decision packets from approved local context.",
+  "risk_ceiling": "low",
+  "allowed_actions": ["internal_analysis", "drafting"],
+  "prohibited_actions": ["external_action", "system_write", "publication", "procurement"],
+  "approval": null,
+  "expires_on": "2026-12-31",
+  "success_metric": "No material gate or evidence-classification error in the approved review sample.",
+  "revocation_trigger": "A material scope, authority, or evidence-integrity breach.",
+  "review_cadence": "quarterly"
+}

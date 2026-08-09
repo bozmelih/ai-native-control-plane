@@ -1,0 +1,71 @@
+{
+  "schema_version": "3.0.0",
+  "task_id": "TASK-EXAMPLE-001",
+  "objective": "Decide the next reversible experiment for improving teacher activity-entry adoption.",
+  "task_class": "decision",
+  "decision_type": "bounded_commitment",
+  "risk_tier": "medium",
+  "compute_route": "high",
+  "context_sources": [
+    {
+      "source_id": "SRC-USER-001",
+      "kind": "user_confirmed",
+      "freshness": "current_conversation",
+      "permitted_use": "decision_support",
+      "summary": "Teacher activity-entry adoption needs improvement."
+    }
+  ],
+  "method_packs": [
+    "problem-framing",
+    "evidence",
+    "hypothesis-led",
+    "workflow",
+    "prioritization",
+    "synthesis"
+  ],
+  "domain_packs": ["product", "education"],
+  "optional_persona_presets": ["product-cxo"],
+  "cognition_graph": [
+    {
+      "node_id": "frame",
+      "purpose": "Define the adoption decision and success measure.",
+      "method_packs": ["problem-framing"]
+    },
+    {
+      "node_id": "diagnose",
+      "purpose": "Test workflow and behavioral causes.",
+      "method_packs": ["hypothesis-led", "workflow"]
+    },
+    {
+      "node_id": "decide",
+      "purpose": "Compare reversible interventions and prepare a decision.",
+      "method_packs": ["prioritization", "synthesis"]
+    }
+  ],
+  "epistemic_register": [
+    {
+      "claim_id": "CLM-001",
+      "class": "user_confirmed",
+      "statement": "Teacher activity-entry adoption needs improvement.",
+      "source_ids": ["SRC-USER-001"]
+    },
+    {
+      "claim_id": "CLM-002",
+      "class": "unknown",
+      "statement": "The dominant cause of non-adoption is not yet established.",
+      "source_ids": []
+    }
+  ],
+  "uncertainty_register": [
+    "Usage analytics and teacher feedback have not yet been assembled."
+  ],
+  "authority_plan": {
+    "current_gate": "recommendation",
+    "human_decision_required": true,
+    "state_write": "propose_only",
+    "external_action": "none",
+    "system_write": "none",
+    "next_gate": "human_decision"
+  },
+  "output_mode": "decision-packet"
+}

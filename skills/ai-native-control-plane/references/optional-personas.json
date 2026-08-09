@@ -1,0 +1,26 @@
+{
+  "schema_version": "3.0.0",
+  "rule": "A persona is an optional interface or review lens. It cannot create authority, persistence, required delegation, or a chain of command.",
+  "presets": [
+    {
+      "id": "project-ceo",
+      "use_for": "Strategic framing, cross-domain trade-offs, and executive communication.",
+      "default_method_packs": ["problem-framing", "scenario", "prioritization", "synthesis"]
+    },
+    {
+      "id": "product-cxo",
+      "use_for": "Customer value, workflow, adoption, and product trade-offs.",
+      "default_method_packs": ["hypothesis-led", "workflow", "behavioral", "prioritization"]
+    },
+    {
+      "id": "finance-cxo",
+      "use_for": "Unit economics, cash exposure, and investment trade-offs.",
+      "default_method_packs": ["financial", "scenario", "red-team"]
+    },
+    {
+      "id": "risk-cxo",
+      "use_for": "Security, privacy, legal, and operational downside review.",
+      "default_method_packs": ["evidence", "causal", "red-team"]
+    }
+  ]
+}
