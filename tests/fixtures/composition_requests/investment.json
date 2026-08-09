@@ -1,0 +1,60 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "JUNO-INVEST-001",
+  "objective": "Decide whether Juno should allocate a bounded budget to UK expansion.",
+  "task_class": "decision",
+  "decision_type": "bounded_commitment",
+  "risk_tier": "medium",
+  "signals": {
+    "ambiguity": "medium",
+    "uncertainty": "medium",
+    "evidence_gaps": true,
+    "decision_consequence": "high",
+    "expected_error_cost": "high",
+    "reversibility": "medium",
+    "cross_domain_complexity": "high",
+    "context_complexity": "medium",
+    "context_staleness": "medium",
+    "conflicting_context": false,
+    "need_for_independent_challenge": false,
+    "materially_plausible_alternatives": 3,
+    "complexity": "high",
+    "validation_requirement": "high"
+  },
+  "context_sources": [
+    {
+      "source_id": "SRC-INVEST-001",
+      "kind": "user_confirmed",
+      "freshness": "current_conversation",
+      "permitted_use": "decision_support",
+      "summary": "A bounded UK expansion budget is under consideration.",
+      "relevance_to_decision": "Defines the capital-allocation choice and geographic option.",
+      "decision_change_potential": true,
+      "status": "available"
+    }
+  ],
+  "cognitive_needs": [
+    {"need": "compare-probability-weighted-outcomes", "why_selected": "Expansion options have different probabilities and payoffs.", "uncertainty_reduced": "Probability-weighted value of committing versus waiting."},
+    {"need": "compare-coherent-futures", "why_selected": "Demand, regulation, and execution can form materially different futures.", "uncertainty_reduced": "Whether the choice is robust across plausible UK futures."},
+    {"need": "test-key-variable-ranges", "why_selected": "Demand, CAC, and delivery cost estimates may cross the decision threshold.", "uncertainty_reduced": "Which input ranges reverse the investment recommendation."},
+    {"need": "compare-foregone-alternatives", "why_selected": "The same budget and founder attention have other uses.", "uncertainty_reduced": "The value of the best foregone Juno investment."}
+  ],
+  "domain_needs": [
+    {"id": "finance", "why_selected": "The decision exposes cash and requires affordability and capital-allocation standards.", "uncertainty_reduced": "Whether downside is affordable and returns are financially coherent."},
+    {"id": "strategy", "why_selected": "Expansion must fit where Juno can win and what it will not fund instead.", "uncertainty_reduced": "Whether UK expansion is strategically coherent."}
+  ],
+  "quality_needs": [
+    {"need": "anticipate-plan-failure", "why_selected": "Expansion failure modes should be identified before capital is committed.", "uncertainty_reduced": "Plausible failure causes, indicators, and stop conditions."},
+    {"need": "separate-evidence-and-assumptions", "why_selected": "Market and financial inputs are incomplete.", "uncertainty_reduced": "Which investment inputs are facts, estimates, or unknowns."}
+  ],
+  "seed_recipe": "investment-decision",
+  "apply_seed_prior": false,
+  "primitive_budget": 7,
+  "include_synthesis": true,
+  "epistemic_register": [
+    {"claim_id": "CLM-INVEST-001", "class": "user_confirmed", "statement": "UK expansion is being considered.", "source_ids": ["SRC-INVEST-001"]},
+    {"claim_id": "CLM-INVEST-002", "class": "unknown", "statement": "The budget and evidence-backed return range are not yet established.", "source_ids": []}
+  ],
+  "uncertainty_register": ["Demand, CAC, delivery cost, budget, and opportunity cost remain uncertain."],
+  "optional_persona_presets": ["finance-cxo"]
+}

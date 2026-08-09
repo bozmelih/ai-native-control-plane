@@ -1,0 +1,47 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "JUNO-HIGH-RISK-001",
+  "objective": "Recommend whether Juno should open production onboarding for real child and family data.",
+  "task_class": "decision",
+  "decision_type": "irreversible_or_regulated",
+  "risk_tier": "high",
+  "signals": {
+    "ambiguity": "medium",
+    "uncertainty": "high",
+    "evidence_gaps": true,
+    "decision_consequence": "high",
+    "expected_error_cost": "high",
+    "reversibility": "low",
+    "cross_domain_complexity": "high",
+    "context_complexity": "high",
+    "context_staleness": "medium",
+    "conflicting_context": true,
+    "need_for_independent_challenge": true,
+    "materially_plausible_alternatives": 3,
+    "complexity": "high",
+    "validation_requirement": "high"
+  },
+  "context_sources": [
+    {"source_id": "SRC-RISK-001", "kind": "primary_source", "freshness": "requires_reverification", "permitted_use": "decision_support", "summary": "Current production onboarding and child-data controls require live verification.", "relevance_to_decision": "Control effectiveness determines whether regulated data may enter production.", "decision_change_potential": true, "status": "stale"}
+  ],
+  "cognitive_needs": [
+    {"need": "identify-causal-mechanism", "why_selected": "A safe decision depends on how a control failure could expose data.", "uncertainty_reduced": "Which control path can cause unauthorized data access."},
+    {"need": "model-feedback-and-interactions", "why_selected": "Authentication, tenancy, operations, and support controls interact.", "uncertainty_reduced": "Whether system interactions create an exposure not visible in one component."}
+  ],
+  "domain_needs": [
+    {"id": "security", "why_selected": "Production access controls and threat paths are material.", "uncertainty_reduced": "Whether confidentiality and integrity controls are effective."},
+    {"id": "privacy", "why_selected": "The decision concerns child and family personal data.", "uncertainty_reduced": "Whether collection, access, transmission, and retention are bounded."},
+    {"id": "education", "why_selected": "Safeguarding and institutional workflows constrain acceptable operation.", "uncertainty_reduced": "Whether education-specific duties and child impact are covered."},
+    {"id": "technology", "why_selected": "Live deployment identity and control implementation require technical proof.", "uncertainty_reduced": "Whether tested controls match production code and configuration."}
+  ],
+  "quality_needs": [],
+  "composition_deviations": [],
+  "primitive_budget": 8,
+  "include_synthesis": true,
+  "epistemic_register": [
+    {"claim_id": "CLM-RISK-001", "class": "primary_source", "statement": "Production control evidence exists but requires freshness verification.", "source_ids": ["SRC-RISK-001"]},
+    {"claim_id": "CLM-RISK-002", "class": "conflicting", "statement": "A prior controlled demo does not by itself prove onboarding readiness.", "source_ids": ["SRC-RISK-001"]}
+  ],
+  "uncertainty_register": ["Live authorization, provisioning, retention, and operational rollback evidence are incomplete."],
+  "optional_persona_presets": ["risk-cxo"]
+}

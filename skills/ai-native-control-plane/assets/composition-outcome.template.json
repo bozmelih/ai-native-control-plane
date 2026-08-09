@@ -1,0 +1,21 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "TASK-EXAMPLE-001",
+  "selected_composition": {
+    "thinking_methods": [],
+    "domain_lenses": [],
+    "quality_checks": [],
+    "synthesis_steps": []
+  },
+  "selected_methods": [],
+  "selected_domain_lenses": [],
+  "selected_checks": [],
+  "composition_deviations": [],
+  "human_override": null,
+  "recommendation_accepted_or_rejected": null,
+  "missed_escalation": null,
+  "unnecessary_escalation": null,
+  "composition_failure_note": null,
+  "downstream_rework_if_known": null,
+  "routing_policy_changed_automatically": false
+}

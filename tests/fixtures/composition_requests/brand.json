@@ -1,0 +1,49 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "JUNO-BRAND-001",
+  "objective": "Choose a defensible Juno brand strategy for CCMS buyers, teachers, and families.",
+  "task_class": "design",
+  "decision_type": "bounded_commitment",
+  "risk_tier": "medium",
+  "signals": {
+    "ambiguity": "medium",
+    "uncertainty": "medium",
+    "evidence_gaps": true,
+    "decision_consequence": "medium",
+    "expected_error_cost": "medium",
+    "reversibility": "medium",
+    "cross_domain_complexity": "medium",
+    "context_complexity": "medium",
+    "context_staleness": "medium",
+    "conflicting_context": false,
+    "need_for_independent_challenge": true,
+    "materially_plausible_alternatives": 3,
+    "complexity": "medium",
+    "validation_requirement": "medium"
+  },
+  "context_sources": [
+    {"source_id": "SRC-BRAND-001", "kind": "user_confirmed", "freshness": "current_conversation", "permitted_use": "decision_support", "summary": "Juno needs a brand strategy across buyer, teacher, and family audiences.", "relevance_to_decision": "Defines the audiences and brand-strategy decision.", "decision_change_potential": true, "status": "available"}
+  ],
+  "cognitive_needs": [
+    {"need": "understand-user-progress", "why_selected": "Brand meaning should connect to the progress each audience seeks.", "uncertainty_reduced": "Which customer job the Juno promise must signal."},
+    {"need": "rebuild-from-fundamentals", "why_selected": "Positioning should derive from real value and category constraints, not inherited slogans.", "uncertainty_reduced": "Which brand promise follows from Juno's fundamental value."}
+  ],
+  "domain_needs": [
+    {"id": "brand", "why_selected": "The decision needs distinctiveness, consistency, salience, and trust standards.", "uncertainty_reduced": "Whether the strategy creates a credible differentiated promise."},
+    {"id": "strategy", "why_selected": "Positioning requires explicit choices about where and how Juno wins.", "uncertainty_reduced": "Which market choice the brand should reinforce."},
+    {"id": "customer", "why_selected": "The promise must reflect buyer, teacher, and family evidence.", "uncertainty_reduced": "Whether internal language matches customer perception."}
+  ],
+  "quality_needs": [
+    {"need": "challenge-leading-recommendation", "why_selected": "The leading positioning must survive a competitor and credibility countercase.", "uncertainty_reduced": "Whether differentiation is real and defensible."}
+  ],
+  "seed_recipe": "brand-strategy",
+  "apply_seed_prior": false,
+  "primitive_budget": 5,
+  "include_synthesis": true,
+  "epistemic_register": [
+    {"claim_id": "CLM-BRAND-001", "class": "user_confirmed", "statement": "Juno serves institutional buyers, teachers, and families.", "source_ids": ["SRC-BRAND-001"]},
+    {"claim_id": "CLM-BRAND-002", "class": "unknown", "statement": "Current audience perception and distinctiveness are not established.", "source_ids": []}
+  ],
+  "uncertainty_register": ["Customer language, category perception, and competitor distinctiveness need evidence."],
+  "optional_persona_presets": ["marketing-cxo"]
+}

@@ -1,72 +1,81 @@
 ---
 name: ai-native-control-plane
-description: Route complex decision and execution work through a stateful, risk-adaptive AI-native control plane. Use when Codex must classify a task, assemble only the necessary context, select dynamic reasoning methods, set compute depth, separate evidence from uncertainty, coordinate optional specialists or personas, preserve authority gates, or compress a decision for an executive. Treat Project CEO, CxO, and other personas as optional interfaces rather than required organizational layers.
+description: Dynamically compose a small task-specific cognition graph from durable state, relevant context, thinking methods, domain lenses, quality checks, compute needs, and authority boundaries. Use when Codex must make or review a material decision, diagnose uncertainty, route multi-domain work, challenge evidence, select minimum sufficient compute, prepare an executive decision packet, or preserve project continuity without recreating a permanent CEO/CxO/persona hierarchy. Treat personas as optional interfaces or review presets only.
 ---
 
 # AI-Native Control Plane
 
-Run one stable control plane and create a temporary cognition graph per task. Do not start from a fixed human-style organization chart, permanent agent roster, or persona hierarchy.
-
-## Start a task
-
-1. Read `references/control-plane-contract.json` and validate the requested work against its invariants.
-2. Load `assets/project-state.template.json` only when durable decisions, authority grants, or cross-session continuity matter. Treat state as a record of accepted decisions and evidence, not a substitute for reasoning.
-3. Create or update a task packet from `assets/task-packet.template.json`. Classify the task before selecting methods, roles, or tools.
-4. Select only the required context, method packs, domain packs, compute route, and output mode. Use `references/packs-and-routing.md` for the selection rules.
-5. Run the temporary cognition graph. Rebuild it for each materially different task; do not promote it to a permanent hierarchy by default.
-6. Run epistemic and authority checks. Use `references/risk-and-authority.md` when a task has material downside, regulated data, irreversible actions, or external effects.
-7. Return an executive-compressed decision packet using `assets/decision-packet.template.md`. State what is decided, what is only recommended, and the next authorized gate.
-8. Propose a state update. Write durable state only with explicit authorization. Validate all structured artifacts with `scripts/validate_artifacts.py`.
-
-## Control-plane invariants
-
-- Keep durable state, task control, temporary cognition, and execution interfaces separate.
-- Separate verified fact, evidence, analysis, hypothesis, assumption, unknown, and decision. Confidence is not evidence.
-- Treat a completed analysis, validator pass, acceptance, activation, and execution as different claims with different gates.
-- Route compute by decision consequence and uncertainty, not by job title or task verbosity.
-- Let optional persona presets change communication or review lenses only. They never create authority or a mandatory chain of command.
-- Keep external action, system write, publication, procurement, and expanded autonomy disabled until explicitly authorized for a bounded scope.
-- Earn autonomy from observed, scoped performance; expire and revoke it deliberately. Never infer it from a title, a successful test, or a prior task.
-
-## Build the temporary cognition graph
-
-Use this compact sequence unless the task packet justifies a different graph:
+Preserve this architecture:
 
 ```text
-classify -> assemble context -> form hypotheses -> test/compare
-         -> synthesize -> red-team if risk warrants -> decision packet -> gate
+Durable State -> Control Plane -> Temporary Cognition Graph -> Optional Execution Interface
 ```
 
-Choose packs by the decision need:
+Apply the paradigm: persistent state, ephemeral cognition. Rebuild reasoning around each task; do not start from a permanent role roster or organization chart.
 
-- Start with `problem-framing`, `evidence`, and `synthesis` for non-trivial work.
-- Add `hypothesis-led`, `MECE`, `causal`, `scenario`, `prioritization`, or `red-team` only when they reduce a named uncertainty.
-- Add a domain pack for domain constraints and evidence standards, not for a permanent department identity.
-- Use a persona preset only if its framing is useful to the recipient. Read `references/optional-personas.json` for its interface-only boundary.
+## Run the control plane
 
-## Risk-adaptive routing
+1. Read `references/control-plane-contract.json` and preserve its invariants.
+2. Classify the task and authority boundary before selecting methods, personas, tools, or compute.
+3. Load the smallest sufficient context: objective, accepted decisions, relevant evidence and constraints, authority boundary, and unresolved material questions. Add context only if it may change the decision.
+4. Diagnose cognitive needs from ambiguity, uncertainty, evidence gaps, consequence, error cost, reversibility, cross-domain/context complexity, staleness, conflicts, challenge need, and material alternatives.
+5. Read `references/cognitive-primitive-registry.json` and `references/domain-lens-registry.json` as needed. Select the smallest justified set of thinking methods, domain lenses, quality checks, and synthesis.
+6. Record `why_selected` and `uncertainty_reduced` for every method and check. Record the decision-relevant constraint or evidence standard for each lens.
+7. Sequence actual dependencies as a temporary cognition graph. Do not duplicate cognition unless independent validation is deliberately required.
+8. Choose minimum sufficient compute using `references/packs-and-routing.md`. Higher compute never creates authority.
+9. Run reasoning, then the selected epistemic and quality checks. Read `references/risk-and-authority.md` for material or regulated downside.
+10. Synthesize using high linguistic compression and low information compression. Use `assets/decision-packet.template.md` for material decisions.
+11. Stop at the current authority gate. Propose state changes; write state only with explicit bounded authorization.
+12. Record outcome observations without changing routing policy automatically.
 
-- `low`: reversible internal work; use baseline evidence and concise review.
-- `medium`: meaningful trade-offs or limited external effect; record assumptions, alternatives, and a human decision boundary.
-- `high`: irreversible, regulated, financial, privacy, safety, or reputation effect; use high compute, independent challenge, provenance, and an explicit human gate.
-- `critical`: potentially severe harm or legally reserved decision; do not automate the decision or execution. Escalate with a bounded decision packet.
+## Compose without bureaucracy
 
-Use `compute_route` as a reasoning budget: `light`, `standard`, `high`, or `maximum`. Higher compute increases investigation and challenge; it does not grant broader authority.
+Add a primitive only when it:
 
-## Persist state without freezing cognition
+- reduces a named uncertainty;
+- tests a material alternative; or
+- materially reduces consequential decision risk.
 
-Preserve accepted decisions, evidence references, unresolved questions, risks, authority grants, and learning events. Keep task-specific methods, working context, temporary specialists, and persona lenses ephemeral unless there is evidence that a reusable pack is justified.
+Do not call eight primitives when three are sufficient. Do not build a complex graph for simple retrieval or transformation. A domain lens is not a department. A persona is not authority. Framework count is not quality.
 
-Validate an individual task, state record, or authority grant with:
+Use `references/seed-recipes.json` only as an optional prior. The task label alone never determines composition. Add or remove recipe items when task signals justify the deviation and record the reason.
+
+## Preserve epistemic control
+
+For each material output distinguish:
+
+- what is known;
+- what is inferred;
+- what is assumed;
+- what is missing;
+- what conflicts; and
+- what would materially change the recommendation.
+
+Use `unknown`, `assumption`, `hypothesis`, and `conflicting` explicitly. Confidence is not evidence. Return a bounded unknown rather than pseudo-certainty when evidence is insufficient.
+
+## Keep interfaces optional
+
+Read `references/optional-personas.json` only when a communication or review preset helps. Project CEO, CFO, CMO, and other labels may suggest context, methods, lenses, checks, or output framing. They cannot create persistence, mandatory delegation, compute entitlement, or authority.
+
+## Work with artifacts
+
+- Start a composition request from `assets/composition-request.template.json`.
+- Store the emitted task packet in the shape of `assets/task-packet.template.json`.
+- Load `assets/project-state.template.json` only when cross-session continuity matters; state is an input, not intelligence.
+- Record routing outcomes with `assets/composition-outcome.template.json`.
+- Use `assets/authority-grant.template.json` only for explicitly approved, scoped, expiring, and revocable earned autonomy.
+- Read `references/v3-to-v3.1-migration.md` when consuming a V3 packet.
+
+Compose deterministically when a structured request is available:
 
 ```text
-python scripts/validate_artifacts.py --task path/to/task.json
-python scripts/validate_artifacts.py --state path/to/state.json
-python scripts/validate_artifacts.py --grant path/to/grant.json
+python scripts/compose_task.py --request path/to/request.json
 ```
 
-Run the full package check with:
+Validate all contracts, templates, and Juno fixtures:
 
 ```text
 python scripts/validate_artifacts.py --all
 ```
+
+Validate one artifact with `--request`, `--task`, `--state`, `--grant`, or `--outcome`.

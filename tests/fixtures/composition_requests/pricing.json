@@ -1,0 +1,50 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "JUNO-PRICE-001",
+  "objective": "Decide whether Juno should raise its monthly price from 1500 TRY to 2500 TRY.",
+  "task_class": "decision",
+  "decision_type": "bounded_commitment",
+  "risk_tier": "medium",
+  "signals": {
+    "ambiguity": "medium",
+    "uncertainty": "medium",
+    "evidence_gaps": true,
+    "decision_consequence": "high",
+    "expected_error_cost": "high",
+    "reversibility": "medium",
+    "cross_domain_complexity": "high",
+    "context_complexity": "medium",
+    "context_staleness": "medium",
+    "conflicting_context": false,
+    "need_for_independent_challenge": false,
+    "materially_plausible_alternatives": 3,
+    "complexity": "high",
+    "validation_requirement": "high"
+  },
+  "context_sources": [
+    {"source_id": "SRC-PRICE-001", "kind": "user_confirmed", "freshness": "current_conversation", "permitted_use": "decision_support", "summary": "A price increase from 1500 TRY to 2500 TRY is under consideration.", "relevance_to_decision": "Defines the price points being compared.", "decision_change_potential": true, "status": "available"}
+  ],
+  "cognitive_needs": [
+    {"need": "test-competing-explanations", "why_selected": "Several value, segment, and elasticity hypotheses can explain price response.", "uncertainty_reduced": "Which customer-response hypothesis should drive the price test."},
+    {"need": "test-key-variable-ranges", "why_selected": "Conversion, retention, and margin can cross the decision threshold.", "uncertainty_reduced": "Which response ranges make 2500 TRY superior or harmful."},
+    {"need": "compare-foregone-alternatives", "why_selected": "Packaging, segmentation, and retaining the current price are credible alternatives.", "uncertainty_reduced": "The value of the best pricing alternative not chosen."}
+  ],
+  "domain_needs": [
+    {"id": "pricing", "why_selected": "Price metric, packaging, elasticity, and transition effects constrain the decision.", "uncertainty_reduced": "Whether the proposed change fits Juno's monetization mechanics."},
+    {"id": "customer", "why_selected": "Buyer value and willingness to pay may differ by segment.", "uncertainty_reduced": "How customers perceive and respond to the price change."},
+    {"id": "finance", "why_selected": "Revenue, contribution, and downside affordability must be compared.", "uncertainty_reduced": "Whether the economics improve across plausible responses."}
+  ],
+  "quality_needs": [
+    {"need": "separate-evidence-and-assumptions", "why_selected": "Willingness-to-pay and elasticity evidence are incomplete.", "uncertainty_reduced": "Which pricing claims are supported versus assumed."}
+  ],
+  "seed_recipe": "pricing-decision",
+  "apply_seed_prior": false,
+  "primitive_budget": 5,
+  "include_synthesis": true,
+  "epistemic_register": [
+    {"claim_id": "CLM-PRICE-001", "class": "user_confirmed", "statement": "The compared prices are 1500 TRY and 2500 TRY.", "source_ids": ["SRC-PRICE-001"]},
+    {"claim_id": "CLM-PRICE-002", "class": "unknown", "statement": "Price elasticity and segment-specific willingness to pay are unknown.", "source_ids": []}
+  ],
+  "uncertainty_register": ["Conversion, retention, margin, and willingness-to-pay response are not established."],
+  "optional_persona_presets": ["finance-cxo"]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "3.1.0",
+  "rule": "Recipes are non-mandatory priors. Diagnose the task from its signals, keep only justified items, and record additions or removals as composition deviations.",
+  "recipes": [
+    {
+      "id": "product-adoption",
+      "use_as_prior_when": "A user workflow has an adoption or repeated-use problem.",
+      "thinking_methods": ["jobs-to-be-done", "hypothesis-led", "causal-analysis", "pareto-prioritization"],
+      "domain_lenses": ["product", "workflow", "behavior"],
+      "quality_checks": ["evidence-assumption-check"],
+      "conditional_additions": {
+        "red-team": "Add only when consequence, error cost, or independent challenge warrants it.",
+        "causal-analysis": "Remove when a root cause is already established by current evidence."
+      }
+    },
+    {
+      "id": "investment-decision",
+      "use_as_prior_when": "A bounded capital allocation decision has uncertain outcomes and foregone alternatives.",
+      "thinking_methods": ["expected-value", "scenario-analysis", "sensitivity-analysis", "opportunity-cost"],
+      "domain_lenses": ["finance", "strategy"],
+      "quality_checks": ["pre-mortem", "evidence-assumption-check"],
+      "conditional_additions": {
+        "red-team": "Add for high consequence or weakly supported assumptions.",
+        "scenario-analysis": "Remove when uncertainty is captured by one independent variable and sensitivity analysis is sufficient."
+      }
+    },
+    {
+      "id": "organization-design",
+      "use_as_prior_when": "Decision rights, coordination, incentives, or operating interfaces are being redesigned.",
+      "thinking_methods": ["first-principles", "systems-thinking", "constraint-analysis", "second-order-effects"],
+      "domain_lenses": ["organization", "strategy"],
+      "quality_checks": ["red-team"],
+      "conditional_additions": {
+        "systems-thinking": "Remove for a bounded single-interface change with no meaningful feedback effects."
+      }
+    },
+    {
+      "id": "pricing-decision",
+      "use_as_prior_when": "Price, packaging, or monetization is being changed.",
+      "thinking_methods": ["hypothesis-led", "sensitivity-analysis", "opportunity-cost"],
+      "domain_lenses": ["pricing", "customer", "finance"],
+      "quality_checks": ["evidence-assumption-check"],
+      "conditional_additions": {
+        "scenario-analysis": "Add when several coherent market or retention futures are plausible.",
+        "expected-value": "Add when outcomes and probability ranges are decision-useful.",
+        "red-team": "Add when pricing downside or reversibility warrants independent challenge."
+      }
+    },
+    {
+      "id": "brand-strategy",
+      "use_as_prior_when": "Positioning, brand promise, distinctiveness, or category choice is material.",
+      "thinking_methods": ["jobs-to-be-done", "first-principles"],
+      "domain_lenses": ["brand", "strategy", "customer"],
+      "quality_checks": ["red-team", "evidence-assumption-check"],
+      "domain_operations": ["competitive-differentiation"],
+      "conditional_additions": {
+        "competitive-differentiation": "Keep as a brand/strategy domain operation; do not create a separate primitive without repeated evidence of unique routing value."
+      }
+    }
+  ]
+}

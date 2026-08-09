@@ -1,0 +1,134 @@
+{
+  "schema_version": "3.1.0",
+  "rule": "A domain lens contributes constraints, vocabulary, and evidence standards. It is not a department, persona, authority source, or mandatory agent.",
+  "lenses": [
+    {
+      "id": "general",
+      "scope_type": "core_domain",
+      "purpose": "Apply domain-neutral decision structure when no specialized standard is material.",
+      "constraints": ["Do not invent domain rules"],
+      "evidence_standards": ["Trace material claims to the strongest available source"]
+    },
+    {
+      "id": "product",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate user value, usability, adoption, product scope, and measurable outcomes.",
+      "constraints": ["Separate discovery evidence from shipped behavior", "Define actor and workflow"],
+      "evidence_standards": ["Observed usage", "User research", "Experiment or product telemetry"]
+    },
+    {
+      "id": "growth",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate acquisition, activation, retention, referral, and growth loops.",
+      "constraints": ["Distinguish volume from incremental causal lift", "Include retention impact"],
+      "evidence_standards": ["Funnel cohorts", "Controlled experiments", "Channel economics"]
+    },
+    {
+      "id": "operations",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate process reliability, capacity, service levels, controls, and handoffs.",
+      "constraints": ["Account for exceptions and ownership", "Specify rollback and monitoring"],
+      "evidence_standards": ["Process observations", "Cycle time and failure data", "Control evidence"]
+    },
+    {
+      "id": "finance",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate affordability, cash exposure, unit economics, capital allocation, and financial risk.",
+      "constraints": ["Do not fabricate prices, probabilities, returns, or funding capacity", "Show currency and time horizon"],
+      "evidence_standards": ["Reconciled financial records", "Explicit assumptions and ranges", "Comparable opportunity cost"]
+    },
+    {
+      "id": "security",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate confidentiality, integrity, availability, threat paths, and control effectiveness.",
+      "constraints": ["Apply least privilege", "Separate scan results from proof of control"],
+      "evidence_standards": ["Configuration or code evidence", "Reproducible tests", "Current deployment identity"]
+    },
+    {
+      "id": "privacy",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate data minimization, lawful handling, access, transmission, retention, and subject impact.",
+      "constraints": ["Separate inspect, modify, transmit, and retain permissions", "Minimize personal data"],
+      "evidence_standards": ["Data inventory", "Purpose and retention records", "Access-control evidence"]
+    },
+    {
+      "id": "legal",
+      "scope_type": "core_domain",
+      "purpose": "Identify legal constraints, obligations, jurisdiction, and decisions reserved for qualified humans.",
+      "constraints": ["Do not present analysis as legal approval", "Identify jurisdiction and effective date"],
+      "evidence_standards": ["Current primary legal text", "Qualified counsel where required"]
+    },
+    {
+      "id": "health",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate clinical or wellbeing consequences with safety-first evidence discipline.",
+      "constraints": ["Do not substitute model output for professional care", "Escalate serious harm risk"],
+      "evidence_standards": ["Current clinical guidance", "Qualified professional review for material decisions"]
+    },
+    {
+      "id": "education",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate learning goals, pedagogy, educator workflow, child impact, and institutional constraints.",
+      "constraints": ["Distinguish engagement from learning outcomes", "Protect child and family data"],
+      "evidence_standards": ["Teacher and learner evidence", "Learning or operational outcomes", "Safeguarding requirements"]
+    },
+    {
+      "id": "customer",
+      "scope_type": "cross_domain_lens",
+      "purpose": "Evaluate customer jobs, willingness to change, objections, experience, and retained value.",
+      "constraints": ["Separate buyer, user, and beneficiary", "Do not infer motives from internal opinion"],
+      "evidence_standards": ["Direct customer evidence", "Observed behavior", "Retention and switching data"]
+    },
+    {
+      "id": "pricing",
+      "scope_type": "subdomain_lens",
+      "purpose": "Evaluate price metric, packaging, willingness to pay, elasticity, and monetization trade-offs.",
+      "constraints": ["Separate value, price, and cost", "Account for segment and transition effects"],
+      "evidence_standards": ["Win/loss and willingness-to-pay evidence", "Conversion and retention by price", "Unit economics"]
+    },
+    {
+      "id": "brand",
+      "scope_type": "subdomain_lens",
+      "purpose": "Evaluate positioning, salience, distinctiveness, promise consistency, and trust.",
+      "constraints": ["Separate intended identity from perceived brand", "Avoid unsupported differentiation claims"],
+      "evidence_standards": ["Customer language", "Category and competitor evidence", "Message or brand measurement"]
+    },
+    {
+      "id": "strategy",
+      "scope_type": "cross_domain_lens",
+      "purpose": "Evaluate where to play, how to win, strategic coherence, advantage, and commitments.",
+      "constraints": ["Make choices and exclusions explicit", "Distinguish ambition from evidence-backed advantage"],
+      "evidence_standards": ["Market and capability evidence", "Competitive alternatives", "Resource implications"]
+    },
+    {
+      "id": "organization",
+      "scope_type": "subdomain_lens",
+      "purpose": "Evaluate decision rights, coordination cost, incentives, accountability, and operating interfaces.",
+      "constraints": ["Do not equate a role label with capability or authority", "Minimize permanent coordination overhead"],
+      "evidence_standards": ["Actual decision flow", "Observed bottlenecks", "Accountability and handoff outcomes"]
+    },
+    {
+      "id": "technology",
+      "scope_type": "core_domain",
+      "purpose": "Evaluate architecture, implementation constraints, maintainability, reliability, and technical risk.",
+      "constraints": ["Verify current versions and deployment state", "Separate build success from production proof"],
+      "evidence_standards": ["Source and configuration evidence", "Tests", "Runtime or deployment evidence"]
+    },
+    {
+      "id": "workflow",
+      "scope_type": "cross_domain_lens",
+      "purpose": "Inspect steps, handoffs, friction, frequency, exceptions, and fit with the actor's real process.",
+      "constraints": ["Map the current workflow before prescribing a new one"],
+      "evidence_standards": ["Observed or reported workflow", "Completion and drop-off data", "Exception cases"],
+      "taxonomy_note": "Moved from V3 method_packs because it supplies a cross-domain analysis lens, not a general reasoning algorithm."
+    },
+    {
+      "id": "behavior",
+      "scope_type": "cross_domain_lens",
+      "purpose": "Inspect incentives, habits, motivation, ability, prompts, and behavioral barriers.",
+      "constraints": ["Do not infer motivation when ability or environment may explain behavior"],
+      "evidence_standards": ["Observed behavior", "Actor testimony", "Intervention response"],
+      "taxonomy_note": "Renamed from V3 behavioral and treated as a cross-domain lens; legacy behavioral remains an alias."
+    }
+  ]
+}

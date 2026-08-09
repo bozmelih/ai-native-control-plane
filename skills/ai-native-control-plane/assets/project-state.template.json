@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.0.0",
+  "schema_version": "3.1.0",
   "project_id": "PROJECT-EXAMPLE",
   "state_version": "0.1.0",
   "accepted_decisions": [],
@@ -14,6 +14,9 @@
   "risk_register": [],
   "authority_grants": [],
   "learning_events": [],
+  "composition_observations": [],
+  "routing_policy_version": "3.1.0",
+  "routing_policy_auto_update": false,
   "latest_task_ids": [],
   "state_write_authorization": "not_authorized"
 }

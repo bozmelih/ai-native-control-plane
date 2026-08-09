@@ -1,0 +1,110 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "TASK-JUNO-ADOPTION-001",
+  "objective": "Decide the next reversible experiment for improving teacher activity-entry adoption.",
+  "task_class": "decision",
+  "decision_type": "bounded_commitment",
+  "risk_tier": "medium",
+  "signals": {
+    "ambiguity": "medium",
+    "uncertainty": "medium",
+    "evidence_gaps": true,
+    "decision_consequence": "medium",
+    "expected_error_cost": "medium",
+    "reversibility": "high",
+    "cross_domain_complexity": "medium",
+    "context_complexity": "medium",
+    "context_staleness": "low",
+    "conflicting_context": false,
+    "need_for_independent_challenge": false,
+    "materially_plausible_alternatives": 3,
+    "complexity": "medium",
+    "validation_requirement": "medium"
+  },
+  "context_sources": [
+    {
+      "source_id": "SRC-USER-001",
+      "kind": "user_confirmed",
+      "freshness": "current_conversation",
+      "permitted_use": "decision_support",
+      "summary": "Teacher activity-entry adoption needs improvement.",
+      "relevance_to_decision": "Establishes the actor, workflow, and outcome needing diagnosis.",
+      "decision_change_potential": true,
+      "status": "available"
+    }
+  ],
+  "cognitive_needs": [
+    {
+      "need": "understand-user-progress",
+      "why_selected": "Adoption depends on the progress teachers are trying to make in their real workflow.",
+      "uncertainty_reduced": "Whether activity logging solves a sufficiently important teacher job."
+    },
+    {
+      "need": "test-competing-explanations",
+      "why_selected": "Several plausible adoption barriers need discriminating evidence.",
+      "uncertainty_reduced": "Which adoption-barrier hypothesis best explains current behavior."
+    },
+    {
+      "need": "identify-causal-mechanism",
+      "why_selected": "The intervention should address a cause rather than an observed symptom.",
+      "uncertainty_reduced": "Which workflow or behavioral mechanism causes non-adoption."
+    },
+    {
+      "need": "select-vital-few",
+      "why_selected": "Juno needs the smallest reversible intervention with the highest likely impact.",
+      "uncertainty_reduced": "Which intervention deserves the next experiment slot."
+    }
+  ],
+  "domain_needs": [
+    {
+      "id": "product",
+      "why_selected": "The decision concerns product adoption and measurable user value.",
+      "uncertainty_reduced": "Which product outcome and telemetry should define success."
+    },
+    {
+      "id": "education",
+      "why_selected": "Teacher workload and educational context constrain viable interventions.",
+      "uncertainty_reduced": "Which educator constraints make an intervention acceptable."
+    },
+    {
+      "id": "workflow",
+      "why_selected": "Logging friction depends on the actual sequence, handoffs, and exceptions.",
+      "uncertainty_reduced": "Where the workflow creates abandonment or delay."
+    },
+    {
+      "id": "behavior",
+      "why_selected": "Ability, prompts, incentives, or habit may explain non-adoption.",
+      "uncertainty_reduced": "Whether behavior is constrained by motivation, ability, or environment."
+    }
+  ],
+  "quality_needs": [
+    {
+      "need": "separate-evidence-and-assumptions",
+      "why_selected": "Current evidence is incomplete and internal opinions must not become facts.",
+      "uncertainty_reduced": "Which adoption claims are supported, assumed, or unknown."
+    }
+  ],
+  "seed_recipe": "product-adoption",
+  "apply_seed_prior": false,
+  "composition_deviations": [],
+  "primitive_budget": 6,
+  "include_synthesis": true,
+  "epistemic_register": [
+    {
+      "claim_id": "CLM-001",
+      "class": "user_confirmed",
+      "statement": "Teacher activity-entry adoption needs improvement.",
+      "source_ids": ["SRC-USER-001"]
+    },
+    {
+      "claim_id": "CLM-002",
+      "class": "unknown",
+      "statement": "The dominant cause of non-adoption is not established.",
+      "source_ids": []
+    }
+  ],
+  "uncertainty_register": [
+    "Usage analytics and teacher evidence have not yet established the dominant adoption barrier."
+  ],
+  "optional_persona_presets": ["product-cxo"]
+}

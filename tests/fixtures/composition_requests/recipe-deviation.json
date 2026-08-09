@@ -1,0 +1,43 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "JUNO-RECIPE-DEVIATION-001",
+  "objective": "Evaluate a Juno price decision where the customer-response hypothesis has already been tested.",
+  "task_class": "decision",
+  "decision_type": "bounded_commitment",
+  "risk_tier": "medium",
+  "signals": {
+    "ambiguity": "low",
+    "uncertainty": "medium",
+    "evidence_gaps": false,
+    "decision_consequence": "high",
+    "expected_error_cost": "medium",
+    "reversibility": "medium",
+    "cross_domain_complexity": "medium",
+    "context_complexity": "medium",
+    "context_staleness": "low",
+    "conflicting_context": false,
+    "need_for_independent_challenge": false,
+    "materially_plausible_alternatives": 2,
+    "complexity": "medium",
+    "validation_requirement": "medium"
+  },
+  "context_sources": [
+    {"source_id": "SRC-DEVIATION-001", "kind": "primary_source", "freshness": "current", "permitted_use": "decision_support", "summary": "A completed price experiment establishes the customer-response relationship for the tested segment.", "relevance_to_decision": "Makes new hypothesis generation redundant and enables expected-value comparison.", "decision_change_potential": true, "status": "available"}
+  ],
+  "cognitive_needs": [],
+  "domain_needs": [],
+  "quality_needs": [],
+  "seed_recipe": "pricing-decision",
+  "apply_seed_prior": true,
+  "composition_deviations": [
+    {"action": "remove", "category": "thinking_method", "id": "hypothesis-led", "reason": "Current primary evidence already resolves the tested customer-response hypothesis."},
+    {"action": "add", "category": "thinking_method", "id": "expected-value", "reason": "Observed response probabilities and payoffs now support a bounded value comparison.", "uncertainty_reduced": "Which tested price has the higher probability-weighted value."}
+  ],
+  "primitive_budget": 5,
+  "include_synthesis": true,
+  "epistemic_register": [
+    {"claim_id": "CLM-DEVIATION-001", "class": "primary_source", "statement": "The tested segment has current price-response evidence.", "source_ids": ["SRC-DEVIATION-001"]}
+  ],
+  "uncertainty_register": ["Expected value still depends on observed payoff and probability ranges."],
+  "optional_persona_presets": []
+}

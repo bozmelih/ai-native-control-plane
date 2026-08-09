@@ -1,0 +1,38 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "JUNO-SIMPLE-001",
+  "objective": "Shorten the supplied paragraph without changing its meaning.",
+  "task_class": "transform",
+  "decision_type": "none",
+  "risk_tier": "low",
+  "signals": {
+    "ambiguity": "low",
+    "uncertainty": "low",
+    "evidence_gaps": false,
+    "decision_consequence": "low",
+    "expected_error_cost": "low",
+    "reversibility": "high",
+    "cross_domain_complexity": "low",
+    "context_complexity": "low",
+    "context_staleness": "low",
+    "conflicting_context": false,
+    "need_for_independent_challenge": false,
+    "materially_plausible_alternatives": 0,
+    "complexity": "low",
+    "validation_requirement": "low"
+  },
+  "context_sources": [
+    {"source_id": "SRC-TEXT-001", "kind": "user_confirmed", "freshness": "current_conversation", "permitted_use": "transformation", "summary": "The paragraph supplied by the user.", "relevance_to_decision": "It is the complete transform input.", "decision_change_potential": true, "status": "available"}
+  ],
+  "cognitive_needs": [],
+  "domain_needs": [],
+  "quality_needs": [],
+  "composition_deviations": [],
+  "primitive_budget": 0,
+  "include_synthesis": false,
+  "epistemic_register": [
+    {"claim_id": "CLM-TEXT-001", "class": "user_confirmed", "statement": "The supplied paragraph is the transform source.", "source_ids": ["SRC-TEXT-001"]}
+  ],
+  "uncertainty_register": [],
+  "optional_persona_presets": []
+}

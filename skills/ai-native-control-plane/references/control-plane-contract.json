@@ -1,16 +1,31 @@
 {
-  "schema_version": "3.0.0",
+  "schema_version": "3.1.0",
   "system": "ai-native-control-plane",
+  "paradigm": "persistent_state_ephemeral_cognition",
   "architecture_layers": [
     "durable_state",
     "control_plane",
     "temporary_cognition_graph",
     "optional_execution_interface"
   ],
+  "runtime_flow": [
+    "human_intent",
+    "task_classification",
+    "context_assembly",
+    "cognitive_need_diagnosis",
+    "cognitive_composition",
+    "compute_routing",
+    "reasoning",
+    "epistemic_and_quality_checks",
+    "synthesis",
+    "authority_gate",
+    "output_or_state_proposal"
+  ],
   "invariants": {
     "human_authority_is_explicit": true,
     "persona_is_required": false,
     "persona_grants_authority": false,
+    "domain_lens_is_department": false,
     "task_graph_is_ephemeral_by_default": true,
     "confidence_is_evidence": false,
     "implicit_state_write_allowed": false,
@@ -18,7 +33,9 @@
     "validator_pass_is_human_approval": false,
     "acceptance_is_execution_authorization": false,
     "compute_route_grants_authority": false,
-    "earned_autonomy_is_scoped_expiring_and_revocable": true
+    "duplicate_cognition_requires_independent_validation_need": true,
+    "earned_autonomy_is_scoped_expiring_and_revocable": true,
+    "observations_auto_modify_routing_policy": false
   },
   "task_classes": [
     "answer",
@@ -29,7 +46,9 @@
     "review",
     "implementation",
     "operation",
-    "incident"
+    "incident",
+    "retrieval",
+    "transform"
   ],
   "decision_types": [
     "none",
@@ -39,6 +58,30 @@
   ],
   "risk_tiers": ["low", "medium", "high", "critical"],
   "compute_routes": ["light", "standard", "high", "maximum"],
+  "compute_selection_signals": [
+    "complexity",
+    "uncertainty",
+    "decision_consequence",
+    "expected_error_cost",
+    "reversibility",
+    "context_complexity",
+    "cross_domain_complexity",
+    "validation_requirement"
+  ],
+  "composition_selection_signals": [
+    "ambiguity",
+    "uncertainty",
+    "evidence_gaps",
+    "decision_consequence",
+    "expected_error_cost",
+    "reversibility",
+    "cross_domain_complexity",
+    "context_complexity",
+    "context_staleness",
+    "conflicting_context",
+    "need_for_independent_challenge",
+    "materially_plausible_alternatives"
+  ],
   "evidence_classes": [
     "verified_fact",
     "user_confirmed",
@@ -50,21 +93,37 @@
     "unknown",
     "conflicting"
   ],
-  "method_packs": [
+  "cognitive_taxonomy": {
+    "thinking_method": "How the task is reasoned about.",
+    "domain_lens": "Domain constraints, concepts, and evidence standards applied without creating a department.",
+    "quality_check": "How reasoning is challenged or validated.",
+    "synthesis": "How material reasoning is finalized without discarding decision information."
+  },
+  "thinking_methods": [
     "problem-framing",
-    "evidence",
-    "hypothesis-led",
+    "first-principles",
     "MECE",
-    "causal",
-    "workflow",
-    "behavioral",
-    "financial",
-    "scenario",
-    "prioritization",
-    "red-team",
-    "synthesis"
+    "hypothesis-led",
+    "causal-analysis",
+    "jobs-to-be-done",
+    "systems-thinking",
+    "second-order-effects",
+    "scenario-analysis",
+    "sensitivity-analysis",
+    "expected-value",
+    "opportunity-cost",
+    "constraint-analysis",
+    "pareto-prioritization"
   ],
-  "domain_packs": [
+  "quality_checks": [
+    "red-team",
+    "pre-mortem",
+    "evidence-assumption-check",
+    "contradiction-check",
+    "epistemic-check"
+  ],
+  "synthesis_steps": ["synthesis"],
+  "domain_lenses": [
     "general",
     "product",
     "growth",
@@ -74,9 +133,61 @@
     "privacy",
     "legal",
     "health",
-    "education"
+    "education",
+    "customer",
+    "pricing",
+    "brand",
+    "strategy",
+    "organization",
+    "technology",
+    "workflow",
+    "behavior"
   ],
-  "output_modes": ["working-note", "decision-packet", "executive-brief", "handoff"],
+  "deprecated_fields": {
+    "method_packs": "Use selected_composition.thinking_methods, quality_checks, and synthesis_steps.",
+    "domain_packs": "Use selected_composition.domain_lenses."
+  },
+  "compatibility_aliases": {
+    "method_packs": {
+      "problem-framing": [{"category": "thinking_method", "id": "problem-framing"}],
+      "evidence": [{"category": "quality_check", "id": "evidence-assumption-check"}],
+      "hypothesis-led": [{"category": "thinking_method", "id": "hypothesis-led"}],
+      "MECE": [{"category": "thinking_method", "id": "MECE"}],
+      "causal": [{"category": "thinking_method", "id": "causal-analysis"}],
+      "workflow": [{"category": "domain_lens", "id": "workflow"}],
+      "behavioral": [{"category": "domain_lens", "id": "behavior"}],
+      "financial": [{"category": "domain_lens", "id": "finance"}],
+      "scenario": [{"category": "thinking_method", "id": "scenario-analysis"}],
+      "prioritization": [{"category": "thinking_method", "id": "pareto-prioritization"}],
+      "red-team": [{"category": "quality_check", "id": "red-team"}],
+      "synthesis": [{"category": "synthesis", "id": "synthesis"}]
+    },
+    "domain_packs": {
+      "general": "general",
+      "product": "product",
+      "growth": "growth",
+      "operations": "operations",
+      "finance": "finance",
+      "security": "security",
+      "privacy": "privacy",
+      "legal": "legal",
+      "health": "health",
+      "education": "education"
+    }
+  },
+  "output_modes": [
+    "executive-compact",
+    "decision-packet",
+    "full-traceability",
+    "working-note",
+    "executive-brief",
+    "handoff"
+  ],
+  "output_mode_defaults": {
+    "default": "executive-compact",
+    "material_decision": "decision-packet",
+    "high_risk_audit_or_governance": "full-traceability"
+  },
   "authority_gates": [
     "research",
     "recommendation",
@@ -89,9 +200,45 @@
     "system_write_authorization"
   ],
   "risk_requirements": {
-    "low": {"minimum_compute": "light", "human_decision_required": false, "red_team_required": false},
-    "medium": {"minimum_compute": "standard", "human_decision_required": true, "red_team_required": false},
-    "high": {"minimum_compute": "high", "human_decision_required": true, "red_team_required": true},
-    "critical": {"minimum_compute": "maximum", "human_decision_required": true, "red_team_required": true}
-  }
+    "low": {
+      "minimum_compute": "light",
+      "human_decision_required": false,
+      "required_quality_checks": []
+    },
+    "medium": {
+      "minimum_compute": "standard",
+      "human_decision_required": true,
+      "required_quality_checks": ["evidence-assumption-check"]
+    },
+    "high": {
+      "minimum_compute": "high",
+      "human_decision_required": true,
+      "required_quality_checks": ["red-team", "epistemic-check"]
+    },
+    "critical": {
+      "minimum_compute": "maximum",
+      "human_decision_required": true,
+      "required_quality_checks": ["red-team", "pre-mortem", "epistemic-check"]
+    }
+  },
+  "anti_bureaucracy": {
+    "selection_rule": "Add a primitive only when it reduces a named uncertainty, tests a material alternative, or materially reduces consequential decision risk.",
+    "simple_task_max_cognitive_primitives": 2,
+    "recipe_is_mandatory": false,
+    "framework_count_is_quality": false,
+    "stable_context_retransmission_required": false
+  },
+  "observability_fields": [
+    "selected_composition",
+    "selected_methods",
+    "selected_domain_lenses",
+    "selected_checks",
+    "composition_deviations",
+    "human_override",
+    "recommendation_accepted_or_rejected",
+    "missed_escalation",
+    "unnecessary_escalation",
+    "composition_failure_note",
+    "downstream_rework_if_known"
+  ]
 }

@@ -1,0 +1,50 @@
+{
+  "schema_version": "3.1.0",
+  "task_id": "JUNO-ORG-001",
+  "objective": "Decide whether Juno's AI operating model should use a permanent CxO hierarchy.",
+  "task_class": "design",
+  "decision_type": "bounded_commitment",
+  "risk_tier": "medium",
+  "signals": {
+    "ambiguity": "medium",
+    "uncertainty": "medium",
+    "evidence_gaps": true,
+    "decision_consequence": "high",
+    "expected_error_cost": "high",
+    "reversibility": "medium",
+    "cross_domain_complexity": "high",
+    "context_complexity": "high",
+    "context_staleness": "low",
+    "conflicting_context": false,
+    "need_for_independent_challenge": true,
+    "materially_plausible_alternatives": 3,
+    "complexity": "high",
+    "validation_requirement": "high"
+  },
+  "context_sources": [
+    {"source_id": "SRC-ORG-001", "kind": "user_confirmed", "freshness": "current_conversation", "permitted_use": "decision_support", "summary": "Juno wants minimum durable agents and task-bounded cognition.", "relevance_to_decision": "Defines the operating-model objective and anti-bureaucracy constraint.", "decision_change_potential": true, "status": "available"}
+  ],
+  "cognitive_needs": [
+    {"need": "rebuild-from-fundamentals", "why_selected": "Human org labels should not be assumed necessary for AI cognition.", "uncertainty_reduced": "Which operating components are fundamentally required."},
+    {"need": "model-feedback-and-interactions", "why_selected": "Persistent roles affect coordination, context flow, and oversight.", "uncertainty_reduced": "How hierarchy changes system-level behavior and coordination cost."},
+    {"need": "identify-binding-constraints", "why_selected": "The design must satisfy authority, context, cost, and reliability limits.", "uncertainty_reduced": "Which constraint actually determines the architecture."},
+    {"need": "trace-downstream-effects", "why_selected": "Permanent role choices can create future bureaucracy and authority confusion.", "uncertainty_reduced": "Delayed effects of institutionalizing role labels."}
+  ],
+  "domain_needs": [
+    {"id": "organization", "why_selected": "The design concerns decision rights and coordination interfaces.", "uncertainty_reduced": "How accountability can work without permanent hierarchy."},
+    {"id": "strategy", "why_selected": "The operating model must support Juno's strategic trade-offs.", "uncertainty_reduced": "Whether the design preserves strategic coherence."}
+  ],
+  "quality_needs": [
+    {"need": "challenge-leading-recommendation", "why_selected": "The preferred AI-native design needs a strong countercase.", "uncertainty_reduced": "Whether a permanent hierarchy has a decisive reliability advantage."}
+  ],
+  "seed_recipe": "organization-design",
+  "apply_seed_prior": false,
+  "primitive_budget": 7,
+  "include_synthesis": true,
+  "epistemic_register": [
+    {"claim_id": "CLM-ORG-001", "class": "user_confirmed", "statement": "The desired operating model minimizes permanent agents.", "source_ids": ["SRC-ORG-001"]},
+    {"claim_id": "CLM-ORG-002", "class": "hypothesis", "statement": "Dynamic composition can reduce coordination overhead without lowering decision quality.", "source_ids": []}
+  ],
+  "uncertainty_register": ["Comparative operating evidence is limited."],
+  "optional_persona_presets": ["project-ceo"]
+}

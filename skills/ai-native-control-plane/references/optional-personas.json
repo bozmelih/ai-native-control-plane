@@ -1,26 +1,51 @@
 {
-  "schema_version": "3.0.0",
-  "rule": "A persona is an optional interface or review lens. It cannot create authority, persistence, required delegation, or a chain of command.",
+  "schema_version": "3.1.0",
+  "rule": "A persona is an optional communication interface, review perspective, or domain preset. It cannot create authority, persistence, required delegation, compute entitlement, or a chain of command.",
   "presets": [
     {
       "id": "project-ceo",
       "use_for": "Strategic framing, cross-domain trade-offs, and executive communication.",
-      "default_method_packs": ["problem-framing", "scenario", "prioritization", "synthesis"]
+      "communication_lens": "Executive decision framing",
+      "suggested_thinking_methods": ["problem-framing", "scenario-analysis", "opportunity-cost"],
+      "suggested_domain_lenses": ["strategy"],
+      "suggested_quality_checks": ["evidence-assumption-check"],
+      "authority_effect": "none"
     },
     {
       "id": "product-cxo",
       "use_for": "Customer value, workflow, adoption, and product trade-offs.",
-      "default_method_packs": ["hypothesis-led", "workflow", "behavioral", "prioritization"]
+      "communication_lens": "Product decision framing",
+      "suggested_thinking_methods": ["jobs-to-be-done", "hypothesis-led", "pareto-prioritization"],
+      "suggested_domain_lenses": ["product", "customer", "workflow", "behavior"],
+      "suggested_quality_checks": ["evidence-assumption-check"],
+      "authority_effect": "none"
     },
     {
       "id": "finance-cxo",
-      "use_for": "Unit economics, cash exposure, and investment trade-offs.",
-      "default_method_packs": ["financial", "scenario", "red-team"]
+      "use_for": "Unit economics, cash exposure, and capital allocation framing.",
+      "communication_lens": "Financial decision framing",
+      "suggested_thinking_methods": ["expected-value", "sensitivity-analysis", "opportunity-cost"],
+      "suggested_domain_lenses": ["finance"],
+      "suggested_quality_checks": ["pre-mortem", "evidence-assumption-check"],
+      "authority_effect": "none"
+    },
+    {
+      "id": "marketing-cxo",
+      "use_for": "Customer, growth, positioning, and brand communication framing.",
+      "communication_lens": "Market and brand decision framing",
+      "suggested_thinking_methods": ["jobs-to-be-done", "hypothesis-led"],
+      "suggested_domain_lenses": ["growth", "customer", "brand", "strategy"],
+      "suggested_quality_checks": ["evidence-assumption-check", "red-team"],
+      "authority_effect": "none"
     },
     {
       "id": "risk-cxo",
       "use_for": "Security, privacy, legal, and operational downside review.",
-      "default_method_packs": ["evidence", "causal", "red-team"]
+      "communication_lens": "Risk review framing",
+      "suggested_thinking_methods": ["causal-analysis", "second-order-effects"],
+      "suggested_domain_lenses": ["security", "privacy", "legal", "operations"],
+      "suggested_quality_checks": ["red-team", "epistemic-check"],
+      "authority_effect": "none"
     }
   ]
 }
