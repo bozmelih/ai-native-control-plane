@@ -1,81 +1,92 @@
 ---
 name: ai-native-control-plane
-description: Dynamically compose a small task-specific cognition graph from durable state, relevant context, thinking methods, domain lenses, quality checks, compute needs, and authority boundaries. Use when Codex must make or review a material decision, diagnose uncertainty, route multi-domain work, challenge evidence, select minimum sufficient compute, prepare an executive decision packet, or preserve project continuity without recreating a permanent CEO/CxO/persona hierarchy. Treat personas as optional interfaces or review presets only.
+description: Operate a model-independent project control plane that plans and compiles decision-relevant context, blocks on missing required context, composes minimal task cognition, defines capability-based worker requirements, verifies outcomes, distills learning into typed memory-change proposals, and applies only explicitly authorized local memory writes. Use for material decisions, long-running projects, multi-worker routing, cross-session continuity, evidence and authority governance, or context/memory lifecycle work. Treat personas and provider-specific workers as optional execution interfaces only.
 ---
 
 # AI-Native Control Plane
 
-Preserve this architecture:
+Preserve the V4 architecture:
 
 ```text
-Durable State -> Control Plane -> Temporary Cognition Graph -> Optional Execution Interface
+Versioned Durable Memory -> Context Lifecycle -> Control Plane
+  -> Temporary Cognition Graph -> Capability-Based Worker Interface
+  -> Verification and Distillation -> Authorized Memory Adapter
 ```
 
-Apply the paradigm: persistent state, ephemeral cognition. Rebuild reasoning around each task; do not start from a permanent role roster or organization chart.
+Apply persistent memory, ephemeral cognition, and explicit write authority. The
+control plane is a project operating system; it is not a prompt, model, persona,
+permanent worker roster, or autonomous memory writer.
 
-## Run the control plane
+## Run the lifecycle
 
-1. Read `references/control-plane-contract.json` and preserve its invariants.
-2. Classify the task and authority boundary before selecting methods, personas, tools, or compute.
-3. Load the smallest sufficient context: objective, accepted decisions, relevant evidence and constraints, authority boundary, and unresolved material questions. Add context only if it may change the decision.
-4. Diagnose cognitive needs from ambiguity, uncertainty, evidence gaps, consequence, error cost, reversibility, cross-domain/context complexity, staleness, conflicts, challenge need, and material alternatives.
-5. Read `references/cognitive-primitive-registry.json` and `references/domain-lens-registry.json` as needed. Select the smallest justified set of thinking methods, domain lenses, quality checks, and synthesis.
-6. Record `why_selected` and `uncertainty_reduced` for every method and check. Record the decision-relevant constraint or evidence standard for each lens.
-7. Sequence actual dependencies as a temporary cognition graph. Do not duplicate cognition unless independent validation is deliberately required.
-8. Choose minimum sufficient compute using `references/packs-and-routing.md`. Higher compute never creates authority.
-9. Run reasoning, then the selected epistemic and quality checks. Read `references/risk-and-authority.md` for material or regulated downside.
-10. Synthesize using high linguistic compression and low information compression. Use `assets/decision-packet.template.md` for material decisions.
-11. Stop at the current authority gate. Propose state changes; write state only with explicit bounded authorization.
-12. Record outcome observations without changing routing policy automatically.
+1. Read `references/control-plane-contract.json` and preserve every invariant.
+2. Classify intent, task, risk, decision type, and current authority without
+   selecting a worker yet.
+3. Read `references/context-and-memory-lifecycle.md`. Plan required and optional
+   context, collect permitted sources, and compile the smallest sufficient set.
+4. Stop when `context_gate.status` is `blocked`. Return only the targeted
+   clarification questions; do not assume missing facts or select cognition,
+   compute, or a worker.
+5. When the gate is `ready`, diagnose cognitive needs and compose the smallest
+   justified methods, lenses, checks, and synthesis graph. Read
+   `references/packs-and-routing.md` as needed.
+6. Define the worker through required capabilities, tools, context references,
+   output contract, compute, authority ceiling, and prohibited actions. A model,
+   provider, persona, or compute route never creates authority.
+7. Run reasoning and the selected checks. Read
+   `references/risk-and-authority.md` for consequential or regulated downside.
+8. Verify the outcome before distillation. Keep facts, inferences, assumptions,
+   hypotheses, unknowns, and conflicts distinct.
+9. Distill reusable learning into `context`, `decision_log`, `backlog`, or
+   TTL-bound `working_memory`. Reject unsupported context promotion and decisions
+   without explicit human acceptance.
+10. Emit a memory-change proposal. Apply it only with a scoped, active,
+    unexpired authorization and exact revision. The adapter writes files only;
+    it never commits, pushes, or contacts GitHub.
+11. Record outcomes without changing routing policy automatically.
 
-## Compose without bureaucracy
+## Keep context and memory bounded
 
-Add a primitive only when it:
+- Add context only when it can change the task, evidence standard, risk, or
+  authority decision.
+- Treat every optional gap as a warning, not a blocker.
+- Keep working memory under `.control-plane/working`, require a TTL, and never
+  auto-promote it.
+- Store durable local records under `memory/context`, `memory/decisions`, and
+  `memory/backlog` through the reference adapter.
+- Propose state changes before requesting write authority. Human acceptance of
+  advice is not implicit state-write authorization.
 
-- reduces a named uncertainty;
-- tests a material alternative; or
-- materially reduces consequential decision risk.
+## Use the artifacts
 
-Do not call eight primitives when three are sufficient. Do not build a complex graph for simple retrieval or transformation. A domain lens is not a department. A persona is not authority. Framework count is not quality.
+- Start from `assets/composition-request.template.json`.
+- Emit `assets/task-packet.template.json`.
+- Capture execution in `assets/execution-outcome.template.json`.
+- Emit `assets/memory-change-proposal.template.json`.
+- Use `assets/memory-write-authorization.template.json` only for explicit,
+  bounded writes.
+- Use `assets/project-state.template.json` for cross-session corporate memory
+  and governance state.
+- Read `references/v3.1-to-v4-migration.md` for legacy artifacts.
 
-Use `references/seed-recipes.json` only as an optional prior. The task label alone never determines composition. Add or remove recipe items when task signals justify the deviation and record the reason.
-
-## Preserve epistemic control
-
-For each material output distinguish:
-
-- what is known;
-- what is inferred;
-- what is assumed;
-- what is missing;
-- what conflicts; and
-- what would materially change the recommendation.
-
-Use `unknown`, `assumption`, `hypothesis`, and `conflicting` explicitly. Confidence is not evidence. Return a bounded unknown rather than pseudo-certainty when evidence is insufficient.
-
-## Keep interfaces optional
-
-Read `references/optional-personas.json` only when a communication or review preset helps. Project CEO, CFO, CMO, and other labels may suggest context, methods, lenses, checks, or output framing. They cannot create persistence, mandatory delegation, compute entitlement, or authority.
-
-## Work with artifacts
-
-- Start a composition request from `assets/composition-request.template.json`.
-- Store the emitted task packet in the shape of `assets/task-packet.template.json`.
-- Load `assets/project-state.template.json` only when cross-session continuity matters; state is an input, not intelligence.
-- Record routing outcomes with `assets/composition-outcome.template.json`.
-- Use `assets/authority-grant.template.json` only for explicitly approved, scoped, expiring, and revocable earned autonomy.
-- Read `references/v3-to-v3.1-migration.md` when consuming a V3 packet.
-
-Compose deterministically when a structured request is available:
+## Run deterministically
 
 ```text
-python scripts/compose_task.py --request path/to/request.json
+python scripts/control_plane.py prepare --request path/to/request.json
+python scripts/control_plane.py distill --task path/to/task.json --outcome path/to/outcome.json
+python scripts/control_plane.py apply --proposal path/to/proposal.json \
+  --authorization path/to/authorization.json --memory-root path/to/repository
+python scripts/control_plane.py migrate-state --state path/to/v3-project-state.json
 ```
 
-Validate all contracts, templates, and Juno fixtures:
+`scripts/compose_task.py` remains a V3.1-compatible preparation entry point and
+always emits V4 task packets.
+
+Validate contracts, templates, fixtures, and lifecycle invariants:
 
 ```text
 python scripts/validate_artifacts.py --all
 ```
 
-Validate one artifact with `--request`, `--task`, `--state`, `--grant`, or `--outcome`.
+A validator pass proves structural conformance only. It does not prove decision
+quality, human acceptance, publication authority, installation, or activation.

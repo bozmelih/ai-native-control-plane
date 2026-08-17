@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "4.0.0",
   "task_id": "TASK-JUNO-ADOPTION-001",
   "objective": "Decide the next reversible experiment for improving teacher activity-entry adoption.",
   "task_class": "decision",
@@ -33,6 +33,27 @@
       "status": "available"
     }
   ],
+  "context_plan": {
+    "requirements": [
+      {
+        "requirement_id": "CTX-ADOPTION-OBJECTIVE",
+        "description": "Establish the actor, workflow, and adoption outcome under review.",
+        "priority": "required",
+        "why_needed": "Worker selection and reasoning would target the wrong problem without a confirmed objective.",
+        "preferred_source_ids": ["SRC-USER-001"],
+        "accepted_statuses": ["available"],
+        "freshness_requirement": "Current user confirmation.",
+        "blocking_if_unsatisfied": true,
+        "question": "Which teacher workflow and adoption outcome should this decision address?",
+        "answer_needed": "A confirmed actor, workflow, and desired outcome.",
+        "owner": "human_decision_owner"
+      }
+    ],
+    "budget": {
+      "max_items": 4,
+      "max_characters": 12000
+    }
+  },
   "cognitive_needs": [
     {
       "need": "understand-user-progress",
@@ -106,5 +127,18 @@
   "uncertainty_register": [
     "Usage analytics and teacher evidence have not yet established the dominant adoption barrier."
   ],
+  "worker_requirements": {
+    "required_capabilities": ["reasoning", "evidence_synthesis"],
+    "allowed_tools": ["read_only_analytics", "document_retrieval"],
+    "output_contract": {
+      "mode": "decision-packet",
+      "required_sections": ["result", "evidence", "uncertainty", "next_gate"]
+    },
+    "prohibited_actions": [
+      "implicit_state_write",
+      "external_action_without_authorization",
+      "authority_expansion"
+    ]
+  },
   "optional_persona_presets": ["product-cxo"]
 }

@@ -1,22 +1,25 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "4.0.0",
   "project_id": "PROJECT-EXAMPLE",
-  "state_version": "0.1.0",
-  "accepted_decisions": [],
-  "evidence_register": [],
-  "open_questions": [
-    {
-      "question_id": "Q-001",
-      "question": "Which evidence would most change the next decision?",
-      "owner": "human_decision_owner"
-    }
-  ],
-  "risk_register": [],
-  "authority_grants": [],
-  "learning_events": [],
-  "composition_observations": [],
-  "routing_policy_version": "3.1.0",
-  "routing_policy_auto_update": false,
-  "latest_task_ids": [],
+  "state_version": "1.0.0",
+  "corporate_memory": {
+    "context": [],
+    "decision_log": [],
+    "backlog": []
+  },
+  "working_memory": {
+    "storage": ".control-plane/working",
+    "default_ttl_hours": 72,
+    "auto_promotion": false
+  },
+  "governance": {
+    "risk_register": [],
+    "authority_grants": [],
+    "learning_events": [],
+    "composition_observations": [],
+    "routing_policy_version": "4.0.0",
+    "routing_policy_auto_update": false,
+    "latest_task_ids": []
+  },
   "state_write_authorization": "not_authorized"
 }

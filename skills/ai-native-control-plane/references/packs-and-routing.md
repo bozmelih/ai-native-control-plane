@@ -5,9 +5,11 @@ Compose the smallest sufficient temporary cognition graph. Do not start from a j
 ## Runtime
 
 ```text
-intent -> classify -> assemble smallest context -> diagnose cognitive needs
-       -> select methods + lenses + checks -> sequence graph -> route compute
-       -> reason -> epistemic/quality checks -> synthesize -> authority gate
+intent -> preliminary classification -> plan/collect/compile context
+       -> context readiness gate -> diagnose cognitive needs
+       -> select methods + lenses + checks -> capability-based worker plan
+       -> reason -> epistemic/quality checks -> verify -> distill
+       -> memory proposal -> authority/write gate
 ```
 
 ## Diagnose before selecting
@@ -38,6 +40,10 @@ A primitive is justified only when it reduces a named uncertainty, tests a mater
 Simple retrieval and transformation tasks should normally have no complex cognition graph. If more than two methods/checks/synthesis steps are selected for a simple task, the validator rejects the packet unless the task is no longer classified as simple.
 
 ## Context assembly
+
+Read `context-and-memory-lifecycle.md` before preparing a V4 task. Context
+assembly may continue only when every required requirement is satisfied. A
+blocked gate returns targeted questions and no worker plan.
 
 Start with only:
 

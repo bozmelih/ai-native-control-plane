@@ -191,7 +191,11 @@ class CompositionFixtureTests(unittest.TestCase):
         state = load_json(ASSETS / "project-state.template.json")
         product = compose(load_json(ASSETS / "composition-request.template.json"))
         pricing = compose(fixture("pricing"))
-        self.assertEqual(contract["architecture_layers"], ["durable_state", "control_plane", "temporary_cognition_graph", "optional_execution_interface"])
+        self.assertEqual(contract["architecture_layers"], [
+            "versioned_durable_memory", "context_lifecycle", "control_plane",
+            "temporary_cognition_graph", "capability_based_worker_interface",
+            "verification_and_distillation", "authorized_memory_adapter",
+        ])
         self.assertNotIn("cognition_graph", state)
         self.assertNotIn("selected_composition", state)
         self.assertNotEqual(product["selected_composition"], pricing["selected_composition"])
@@ -260,7 +264,7 @@ class GuardrailTests(unittest.TestCase):
 
     def test_22_context_pack_rejects_irrelevant_source(self) -> None:
         task = compose(fixture("pricing"))
-        task["context_sources"][0]["decision_change_potential"] = False
+        task["compiled_context"]["items"][0]["decision_change_potential"] = False
         result = validate_temp_task(task)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("ERR_CONTEXT_NOT_DECISION_RELEVANT", result.stdout)
@@ -286,7 +290,7 @@ class GuardrailTests(unittest.TestCase):
         state = load_json(ASSETS / "project-state.template.json")
         outcome = load_json(ASSETS / "composition-outcome.template.json")
         contract = load_json(REFERENCES / "control-plane-contract.json")
-        self.assertFalse(state["routing_policy_auto_update"])
+        self.assertFalse(state["governance"]["routing_policy_auto_update"])
         self.assertFalse(outcome["routing_policy_changed_automatically"])
         self.assertFalse(contract["invariants"]["observations_auto_modify_routing_policy"])
 

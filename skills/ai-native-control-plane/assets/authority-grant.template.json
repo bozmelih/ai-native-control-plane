@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "4.0.0",
   "grant_id": "GRANT-EXAMPLE-001",
   "status": "proposed",
   "scope": "Draft internal, reversible decision packets from approved local context.",

@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "4.0.0",
   "rule": "A domain lens contributes constraints, vocabulary, and evidence standards. It is not a department, persona, authority source, or mandatory agent.",
   "lenses": [
     {

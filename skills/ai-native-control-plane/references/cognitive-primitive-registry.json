@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "4.0.0",
   "purpose": "Enable deliberate selection of a small reusable cognitive set; not teach the model each framework.",
   "selection_rule": "Select only when the primitive reduces a named uncertainty, tests a material alternative, or materially lowers consequential decision risk.",
   "primitives": [

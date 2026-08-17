@@ -1,0 +1,40 @@
+{
+  "schema_version": "4.0.0",
+  "task_id": "LIFECYCLE-STALE-REQUIRED",
+  "objective": "Block when required context is stale.",
+  "task_class": "answer",
+  "decision_type": "none",
+  "risk_tier": "low",
+  "signals": {},
+  "context_sources": [{
+    "source_id": "SRC-STALE",
+    "kind": "internal_evidence",
+    "freshness": "stale",
+    "permitted_use": "decision_support",
+    "summary": "An outdated policy snapshot.",
+    "relevance_to_decision": "The current policy controls the answer.",
+    "decision_change_potential": true,
+    "status": "stale"
+  }],
+  "context_plan": {
+    "requirements": [{
+      "requirement_id": "CTX-CURRENT-POLICY",
+      "description": "Current policy.",
+      "priority": "required",
+      "why_needed": "Outdated policy could reverse the answer.",
+      "preferred_source_ids": ["SRC-STALE"],
+      "accepted_statuses": ["available"],
+      "freshness_requirement": "Current.",
+      "blocking_if_unsatisfied": true,
+      "question": "What is the current approved policy?",
+      "answer_needed": "A current policy reference.",
+      "owner": "human_decision_owner"
+    }],
+    "budget": {"max_items": 1, "max_characters": 4000}
+  },
+  "cognitive_needs": [], "domain_needs": [], "quality_needs": [],
+  "composition_deviations": [], "primitive_budget": 0, "include_synthesis": false,
+  "epistemic_register": [], "uncertainty_register": ["Current policy is unavailable."],
+  "worker_requirements": {"required_capabilities": ["reasoning"], "allowed_tools": [], "prohibited_actions": ["implicit_state_write"]},
+  "optional_persona_presets": []
+}

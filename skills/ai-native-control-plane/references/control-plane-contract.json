@@ -1,25 +1,37 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "4.0.0",
   "system": "ai-native-control-plane",
   "paradigm": "persistent_state_ephemeral_cognition",
   "architecture_layers": [
-    "durable_state",
+    "versioned_durable_memory",
+    "context_lifecycle",
     "control_plane",
     "temporary_cognition_graph",
-    "optional_execution_interface"
+    "capability_based_worker_interface",
+    "verification_and_distillation",
+    "authorized_memory_adapter"
   ],
   "runtime_flow": [
     "human_intent",
-    "task_classification",
-    "context_assembly",
+    "preliminary_task_and_authority_classification",
+    "context_planning",
+    "context_collection",
+    "context_compilation",
+    "context_readiness_gate",
+    "targeted_clarification_if_blocked",
     "cognitive_need_diagnosis",
     "cognitive_composition",
     "compute_routing",
+    "capability_based_worker_planning",
     "reasoning",
     "epistemic_and_quality_checks",
     "synthesis",
     "authority_gate",
-    "output_or_state_proposal"
+    "verification",
+    "distillation",
+    "memory_change_proposal",
+    "authorized_adapter_write",
+    "outcome_observation"
   ],
   "invariants": {
     "human_authority_is_explicit": true,
@@ -35,8 +47,37 @@
     "compute_route_grants_authority": false,
     "duplicate_cognition_requires_independent_validation_need": true,
     "earned_autonomy_is_scoped_expiring_and_revocable": true,
-    "observations_auto_modify_routing_policy": false
+    "observations_auto_modify_routing_policy": false,
+    "missing_required_context_allows_assumption": false,
+    "blocked_context_allows_worker_selection": false,
+    "distillation_grants_write_authority": false,
+    "working_memory_auto_promotes": false,
+    "worker_identity_grants_authority": false,
+    "memory_adapter_invokes_git": false
   },
+  "lifecycle_statuses": [
+    "blocked_context",
+    "ready_for_worker",
+    "execution_complete",
+    "distillation_pending",
+    "memory_update_proposed",
+    "memory_update_applied"
+  ],
+  "context_gate_statuses": ["ready", "blocked"],
+  "context_source_statuses": [
+    "available",
+    "missing",
+    "inaccessible",
+    "stale",
+    "conflicting",
+    "untrusted",
+    "permission_denied"
+  ],
+  "context_requirement_priorities": ["required", "optional"],
+  "memory_classes": ["context", "decision_log", "backlog", "working_memory"],
+  "durable_memory_classes": ["context", "decision_log", "backlog"],
+  "memory_operations": ["add", "update", "supersede"],
+  "worker_selection_basis": "capability_contract",
   "task_classes": [
     "answer",
     "diagnosis",
@@ -145,7 +186,10 @@
   ],
   "deprecated_fields": {
     "method_packs": "Use selected_composition.thinking_methods, quality_checks, and synthesis_steps.",
-    "domain_packs": "Use selected_composition.domain_lenses."
+    "domain_packs": "Use selected_composition.domain_lenses.",
+    "accepted_decisions": "Normalize into corporate_memory.decision_log without writing state.",
+    "evidence_register": "Normalize into corporate_memory.context without writing state.",
+    "open_questions": "Normalize into corporate_memory.backlog without writing state."
   },
   "compatibility_aliases": {
     "method_packs": {
@@ -190,6 +234,7 @@
   },
   "authority_gates": [
     "research",
+    "context_resolution",
     "recommendation",
     "human_decision",
     "implementation_authorization",
