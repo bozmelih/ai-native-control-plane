@@ -1,4 +1,4 @@
 interface:
   display_name: "AI-Native Control Plane"
-  short_description: "Dynamic minimal cognition for reliable decisions"
-  default_prompt: "Use $ai-native-control-plane to diagnose this task and compose the smallest reliable cognition graph with explicit evidence, compute, and authority gates."
+  short_description: "Context-gated work and governed memory"
+  default_prompt: "Use $ai-native-control-plane to compile required context, stop on material gaps, route the right worker capabilities, and propose only authorized memory updates."

@@ -1,0 +1,36 @@
+{
+  "schema_version": "4.0.0",
+  "task_id": "LIFECYCLE-REQUIRED-MISSING",
+  "objective": "Answer only after required project context is available.",
+  "task_class": "answer",
+  "decision_type": "none",
+  "risk_tier": "low",
+  "signals": {},
+  "context_sources": [],
+  "context_plan": {
+    "requirements": [{
+      "requirement_id": "CTX-REQUIRED",
+      "description": "Required project decision context.",
+      "priority": "required",
+      "why_needed": "The answer would be materially different without it.",
+      "preferred_source_ids": ["SRC-MISSING"],
+      "accepted_statuses": ["available"],
+      "freshness_requirement": "Current.",
+      "blocking_if_unsatisfied": true,
+      "question": "What accepted project decision governs this answer?",
+      "answer_needed": "The accepted decision and its evidence reference.",
+      "owner": "human_decision_owner"
+    }],
+    "budget": {"max_items": 2, "max_characters": 4000}
+  },
+  "cognitive_needs": [],
+  "domain_needs": [],
+  "quality_needs": [],
+  "composition_deviations": [],
+  "primitive_budget": 0,
+  "include_synthesis": false,
+  "epistemic_register": [],
+  "uncertainty_register": ["Required project decision is missing."],
+  "worker_requirements": {"required_capabilities": ["reasoning"], "allowed_tools": [], "prohibited_actions": ["implicit_state_write"]},
+  "optional_persona_presets": []
+}

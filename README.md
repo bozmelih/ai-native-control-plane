@@ -1,98 +1,137 @@
-# AI-Native Control Plane V3.1
+# AI-Native Control Plane V4
 
-A reusable Codex skill for decision-quality work built on one invariant:
+AI-Native Control Plane is a model-independent project operating system for
+context-gated work, minimal task cognition, capability-based worker routing,
+and governed organizational memory.
 
-> **Persistent state, ephemeral cognition. The control plane dynamically composes a small set of reasoning primitives, domain lenses, and quality checks for each task.**
+It is not a prompt, model, permanent agent hierarchy, or autonomous knowledge
+writer. Its competitive surface is the working system around AI workers:
 
 ```text
-Durable State -> Control Plane -> Temporary Cognition Graph -> Optional Execution Interface
+Versioned Durable Memory
+  -> Context Planning and Compilation
+  -> Context Readiness Gate
+  -> Control Plane and Temporary Cognition
+  -> Capability-Based Worker Interface
+  -> Execution and Verification
+  -> Distillation
+  -> Memory-Change Proposal
+  -> Authorized Local Adapter Write
 ```
 
-The architecture asks a different question from a human organization chart:
+The core rule remains **persistent memory, ephemeral cognition**. V4 adds two
+explicit phases around V3.1 composition:
 
-- Human-organization question: “Which AI employee should do this?”
-- AI-native question: **“Which context, reasoning methods, domain lenses, quality checks, compute level, and authority are required to solve this task reliably?”**
+- At the start, plan, collect, and compile only decision-relevant context.
+- At the end, distill verified learning and propose a typed memory update.
 
-Project CEO, CFO, CMO, CxO, and specialist personas remain available as optional communication, review, or domain presets. They are not permanent organizational dependencies and cannot grant authority.
-
-## V3 audit outcome
-
-V3’s core was kept: durable state, temporary task graphs, task classification, smallest-sufficient context, four compute routes, four risk tiers, explicit human authority, evidence taxonomy, no implicit state write, earned autonomy, executive compression, risk-adaptive governance, and standard-library validation.
-
-V3.1 changes only the composition layer:
-
-- Splits mixed `method_packs` into typed `thinking_methods`, `domain_lenses`, `quality_checks`, and optional `synthesis_steps`.
-- Adds a 20-item primitive registry and a domain-lens registry with constraints and evidence standards.
-- Adds cognitive-need diagnosis, task-signal routing, primitive budgets, typed cognition graphs, and selection rationale.
-- Adds optional seed recipes that may be changed or ignored with a recorded reason.
-- Adds composition outcome observations without self-modifying routing.
-- Retains V3 packet compatibility through explicit aliases.
-
-The full KEEP / MODIFY / ADD / MOVE / DEPRECATE map is in [`v3-to-v3.1-migration.md`](skills/ai-native-control-plane/references/v3-to-v3.1-migration.md).
+If required context is unavailable, stale, permission-denied, untrusted, or
+materially conflicting, the lifecycle stops and asks targeted questions. It
+does not fill the gap with an assumption or select a worker.
 
 ## Runtime
 
 ```text
-Human intent
-  -> task classification
-  -> smallest sufficient context
-  -> cognitive need diagnosis
-  -> methods + lenses + checks
-  -> temporary cognition graph
-  -> minimum sufficient compute
-  -> reasoning and epistemic checks
-  -> synthesis
-  -> authority gate
-  -> output or state proposal
+intent + preliminary classification
+  -> context plan -> collect -> compile -> readiness gate
+  -> cognition + capability-based worker plan -> execute -> verify
+  -> distill -> memory-change proposal -> authorized adapter write
+  -> outcome observation
 ```
 
-A primitive is selected only when it reduces a named uncertainty, tests a material alternative, or materially lowers consequential decision risk. Simple retrieval and transformation should not create a complex graph.
+Context requirements are `required` or `optional`. Required gaps block;
+optional gaps remain warnings. Context budgets use `max_items` and
+`max_characters`, so the core does not depend on a model tokenizer.
+
+Workers are described by capabilities, allowed tools, compute route, compiled
+context, output contract, authority ceiling, and prohibited actions. No model,
+provider, persona, or compute label grants authority.
+
+## Memory classes
+
+| Class | Persistence rule |
+| --- | --- |
+| `context` | Reusable, source-backed project knowledge only. |
+| `decision_log` | Requires explicit human acceptance and evidence reference. |
+| `backlog` | Requires owner, status, and next gate. |
+| `working_memory` | Task-scoped, TTL-bound, Git-ignored, and never auto-promoted. |
+
+The local reference adapter stores durable JSON records in
+`memory/context`, `memory/decisions`, and `memory/backlog`. Working memory lives
+under `.control-plane/working`. The adapter validates authorization, exact base
+revision, path safety, allowed memory classes, and idempotent `change_id`
+values. It never invokes Git or a remote API.
+
+## CLI
+
+Prepare a task:
+
+```text
+python skills/ai-native-control-plane/scripts/control_plane.py prepare \
+  --request skills/ai-native-control-plane/assets/composition-request.template.json
+```
+
+Distill a verified outcome:
+
+```text
+python skills/ai-native-control-plane/scripts/control_plane.py distill \
+  --task path/to/task.json \
+  --outcome skills/ai-native-control-plane/assets/execution-outcome.template.json
+```
+
+Apply an explicitly authorized local write:
+
+```text
+python skills/ai-native-control-plane/scripts/control_plane.py apply \
+  --proposal path/to/memory-proposal.json \
+  --authorization path/to/memory-write-authorization.json \
+  --memory-root path/to/repository
+```
+
+`compose_task.py` remains a compatibility entry point for V3.1 requests and
+always emits a V4 packet.
+
+Normalize legacy project state without writing it:
+
+```text
+python skills/ai-native-control-plane/scripts/control_plane.py migrate-state \
+  --state path/to/v3-project-state.json
+```
 
 ## Repository layout
 
 ```text
 skills/ai-native-control-plane/
   SKILL.md
-  references/                       contracts, registries, routing, migration
-  assets/                           request, task, state, outcome, and decision templates
-  scripts/compose_task.py           deterministic composition helper
-  scripts/validate_artifacts.py     contracts and invariant validator
-tests/fixtures/composition_requests Juno composition fixtures
-tests/test_validation.py            27 behavioral and guardrail tests
+  references/                       contracts, lifecycle, routing, migration
+  assets/                           request, task, outcome, memory templates
+  scripts/control_plane.py          prepare, distill, and apply lifecycle CLI
+  scripts/compose_task.py            V3.1-compatible prepare wrapper
+  scripts/memory_adapter.py          local Git-backed reference adapter
+  scripts/validate_artifacts.py      deterministic package validator
+tests/                               regression and V4 lifecycle fixtures
 ```
 
-## Compose a task
-
-```text
-python skills/ai-native-control-plane/scripts/compose_task.py \
-  --request skills/ai-native-control-plane/assets/composition-request.template.json
-```
-
-The request carries task signals and named cognitive/domain/quality needs. The output carries selected methods, lenses, checks, `why_selected`, `uncertainty_reduced`, graph order, compute rationale, epistemic register, authority gate, and observability fields.
-
-## Validate
+## Validation
 
 Python 3.10+ is sufficient; runtime has no third-party dependencies.
 
 ```text
 python skills/ai-native-control-plane/scripts/validate_artifacts.py --all
 python -m unittest discover -s tests -p "test_*.py"
-python /path/to/skill-creator/scripts/quick_validate.py skills/ai-native-control-plane
 ```
 
-`--all` validates contracts, templates, the registry, all Juno fixtures, composition outputs, context relevance, risk/compute requirements, epistemic controls, persona boundaries, state-write gates, and non-self-modification.
+Validation covers V3/V3.1 compatibility, context blocking, targeted
+clarification, capability-based worker planning, evidence promotion,
+verified provenance, decision/backlog/working-memory rules, write authorization, optimistic
+revision, idempotency, path traversal, and non-self-modifying routing.
 
-## Backward compatibility
+## Compatibility and limits
 
-- V3.1 is the emitted format.
-- V3 `3.0.0` task packets remain readable through `method_packs` and `domain_packs` aliases and produce a deprecation warning.
-- V3 project-state and earned-autonomy grant records remain readable.
-- `workflow`, `behavioral`, and `financial` are intentionally reclassified through aliases; no incorrect taxonomy is preserved in new output.
-
-## Deliberate limits
-
-- The composer sequences cognitive operations; it does not perform the reasoning itself.
-- Recipes are priors, not learned routing policy.
-- Observations do not update policy automatically.
-- There is no framework marketplace or 50–100-item encyclopedia.
-- Validation proves structure and invariants, not decision correctness or human authorization.
+- V3.0 task packets remain readable through legacy aliases.
+- V3.1 requests and state remain readable through explicit normalization.
+- V4 emits only `4.0.0` artifacts and never performs migration writes.
+- The package does not include a remote GitHub API adapter, credentials,
+  automatic commits, pull requests, releases, installation, or activation.
+- Validator success proves contract conformance, not strategic correctness,
+  human approval, publication authority, or operational readiness.

@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "4.0.0",
   "rule": "A persona is an optional communication interface, review perspective, or domain preset. It cannot create authority, persistence, required delegation, compute entitlement, or a chain of command.",
   "presets": [
     {

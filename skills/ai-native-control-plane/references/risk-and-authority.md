@@ -28,6 +28,12 @@ Use `unknown`, `assumption`, `hypothesis`, or `conflicting` when appropriate. Co
 
 State updates are proposals until `system_write_authorization` or a bounded state-write authorization reference is present. Human acceptance of a recommendation is not implicit permission to modify state or act externally.
 
+In V4, context compilation is read-only, distillation is proposal-only, and
+adapter application is the first state-write operation. The adapter must reject
+missing, expired, task-mismatched, class-mismatched, or revision-conflicted
+authorization. A blocked context gate cannot select a worker or inherit an
+execution gate.
+
 ## Earned autonomy
 
 Grant autonomy only after explicit human approval and recorded evidence of reliable performance in a narrow, reversible scope. Every grant needs a risk ceiling, conditions, metric, expiry, and revocation trigger. A prior success, validator pass, persona title, or higher compute route cannot create a grant.

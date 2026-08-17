@@ -1,0 +1,11 @@
+{
+  "schema_version": "4.0.0",
+  "authorization_id": "AUTH-MEMORY-001",
+  "status": "active",
+  "task_id": "TASK-JUNO-ADOPTION-001",
+  "scopes": ["memory_write"],
+  "allowed_memory_classes": ["context", "backlog", "working_memory"],
+  "approved_by": "human_decision_owner",
+  "evidence_reference": "DECISION-MEMORY-WRITE-001",
+  "expires_at": "2099-12-31T23:59:59Z"
+}

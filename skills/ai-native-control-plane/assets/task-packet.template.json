@@ -1,5 +1,5 @@
 {
-  "schema_version": "3.1.0",
+  "schema_version": "4.0.0",
   "task_id": "TASK-JUNO-ADOPTION-001",
   "objective": "Decide the next reversible experiment for improving teacher activity-entry adoption.",
   "task_class": "decision",
@@ -166,7 +166,12 @@
       "primitive_id": "jobs-to-be-done",
       "purpose": "Identify the progress an actor is trying to make and the circumstances shaping choice.",
       "why_selected": "Adoption depends on the progress teachers are trying to make in their real workflow.",
-      "applied_domain_lenses": ["behavior", "education", "product", "workflow"],
+      "applied_domain_lenses": [
+        "behavior",
+        "education",
+        "product",
+        "workflow"
+      ],
       "depends_on": []
     },
     {
@@ -175,8 +180,15 @@
       "primitive_id": "hypothesis-led",
       "purpose": "Turn uncertainty into testable competing explanations or propositions.",
       "why_selected": "Several plausible adoption barriers need discriminating evidence.",
-      "applied_domain_lenses": ["behavior", "education", "product", "workflow"],
-      "depends_on": ["method-1-jobs-to-be-done"]
+      "applied_domain_lenses": [
+        "behavior",
+        "education",
+        "product",
+        "workflow"
+      ],
+      "depends_on": [
+        "method-1-jobs-to-be-done"
+      ]
     },
     {
       "node_id": "method-3-causal-analysis",
@@ -184,8 +196,15 @@
       "primitive_id": "causal-analysis",
       "purpose": "Distinguish root causes, contributing factors, correlations, and symptoms.",
       "why_selected": "The intervention should address a cause rather than an observed symptom.",
-      "applied_domain_lenses": ["behavior", "education", "product", "workflow"],
-      "depends_on": ["method-2-hypothesis-led"]
+      "applied_domain_lenses": [
+        "behavior",
+        "education",
+        "product",
+        "workflow"
+      ],
+      "depends_on": [
+        "method-2-hypothesis-led"
+      ]
     },
     {
       "node_id": "method-4-pareto-prioritization",
@@ -193,8 +212,15 @@
       "primitive_id": "pareto-prioritization",
       "purpose": "Select the smallest action set likely to produce most of the material value.",
       "why_selected": "Juno needs the smallest reversible intervention with the highest likely impact.",
-      "applied_domain_lenses": ["behavior", "education", "product", "workflow"],
-      "depends_on": ["method-3-causal-analysis"]
+      "applied_domain_lenses": [
+        "behavior",
+        "education",
+        "product",
+        "workflow"
+      ],
+      "depends_on": [
+        "method-3-causal-analysis"
+      ]
     },
     {
       "node_id": "check-1-evidence-assumption-check",
@@ -202,8 +228,15 @@
       "primitive_id": "evidence-assumption-check",
       "purpose": "Separate supported claims from inference, assumptions, hypotheses, and unknowns.",
       "why_selected": "Current evidence is incomplete and internal opinions must not become facts.",
-      "applied_domain_lenses": ["behavior", "education", "product", "workflow"],
-      "depends_on": ["method-4-pareto-prioritization"]
+      "applied_domain_lenses": [
+        "behavior",
+        "education",
+        "product",
+        "workflow"
+      ],
+      "depends_on": [
+        "method-4-pareto-prioritization"
+      ]
     },
     {
       "node_id": "synthesis",
@@ -211,8 +244,15 @@
       "primitive_id": "synthesis",
       "purpose": "Integrate material findings into a decision-ready conclusion without hiding uncertainty.",
       "why_selected": "Material findings require decision-ready integration.",
-      "applied_domain_lenses": ["behavior", "education", "product", "workflow"],
-      "depends_on": ["check-1-evidence-assumption-check"]
+      "applied_domain_lenses": [
+        "behavior",
+        "education",
+        "product",
+        "workflow"
+      ],
+      "depends_on": [
+        "check-1-evidence-assumption-check"
+      ]
     }
   ],
   "compute_route": "standard",
@@ -225,7 +265,9 @@
       "claim_id": "CLM-001",
       "class": "user_confirmed",
       "statement": "Teacher activity-entry adoption needs improvement.",
-      "source_ids": ["SRC-USER-001"]
+      "source_ids": [
+        "SRC-USER-001"
+      ]
     },
     {
       "claim_id": "CLM-002",
@@ -245,18 +287,46 @@
     "system_write": "none",
     "next_gate": "human_decision"
   },
-  "optional_persona_presets": ["product-cxo"],
+  "optional_persona_presets": [
+    "product-cxo"
+  ],
   "output_mode": "decision-packet",
   "composition_observability": {
     "selected_composition": {
-      "thinking_methods": ["jobs-to-be-done", "hypothesis-led", "causal-analysis", "pareto-prioritization"],
-      "domain_lenses": ["behavior", "education", "product", "workflow"],
-      "quality_checks": ["evidence-assumption-check"],
-      "synthesis_steps": ["synthesis"]
+      "thinking_methods": [
+        "jobs-to-be-done",
+        "hypothesis-led",
+        "causal-analysis",
+        "pareto-prioritization"
+      ],
+      "domain_lenses": [
+        "behavior",
+        "education",
+        "product",
+        "workflow"
+      ],
+      "quality_checks": [
+        "evidence-assumption-check"
+      ],
+      "synthesis_steps": [
+        "synthesis"
+      ]
     },
-    "selected_methods": ["jobs-to-be-done", "hypothesis-led", "causal-analysis", "pareto-prioritization"],
-    "selected_domain_lenses": ["behavior", "education", "product", "workflow"],
-    "selected_checks": ["evidence-assumption-check"],
+    "selected_methods": [
+      "jobs-to-be-done",
+      "hypothesis-led",
+      "causal-analysis",
+      "pareto-prioritization"
+    ],
+    "selected_domain_lenses": [
+      "behavior",
+      "education",
+      "product",
+      "workflow"
+    ],
+    "selected_checks": [
+      "evidence-assumption-check"
+    ],
     "composition_deviations": [],
     "human_override": null,
     "recommendation_accepted_or_rejected": null,
@@ -264,5 +334,98 @@
     "unnecessary_escalation": null,
     "composition_failure_note": null,
     "downstream_rework_if_known": null
+  },
+  "context_plan": {
+    "requirements": [
+      {
+        "requirement_id": "CTX-ADOPTION-OBJECTIVE",
+        "description": "Establish the actor, workflow, and adoption outcome under review.",
+        "priority": "required",
+        "why_needed": "Worker selection and reasoning would target the wrong problem without a confirmed objective.",
+        "preferred_source_ids": [
+          "SRC-USER-001"
+        ],
+        "accepted_statuses": [
+          "available"
+        ],
+        "freshness_requirement": "Current user confirmation.",
+        "blocking_if_unsatisfied": true,
+        "question": "Which teacher workflow and adoption outcome should this decision address?",
+        "answer_needed": "A confirmed actor, workflow, and desired outcome.",
+        "owner": "human_decision_owner"
+      }
+    ],
+    "budget": {
+      "max_items": 4,
+      "max_characters": 12000
+    }
+  },
+  "compiled_context": {
+    "items": [
+      {
+        "source_id": "SRC-USER-001",
+        "kind": "user_confirmed",
+        "freshness": "current_conversation",
+        "permitted_use": "decision_support",
+        "summary": "Teacher activity-entry adoption needs improvement.",
+        "relevance_to_decision": "Establishes the actor, workflow, and outcome needing diagnosis.",
+        "decision_change_potential": true,
+        "status": "available"
+      }
+    ],
+    "source_refs": [
+      "SRC-USER-001"
+    ],
+    "selected_for": {
+      "SRC-USER-001": [
+        "CTX-ADOPTION-OBJECTIVE"
+      ]
+    },
+    "excluded_sources": [],
+    "budget": {
+      "max_items": 4,
+      "max_characters": 12000
+    },
+    "used_items": 1,
+    "used_characters": 50
+  },
+  "context_gate": {
+    "status": "ready",
+    "blockers": [],
+    "warnings": []
+  },
+  "clarification_questions": [],
+  "compatibility_warnings": [],
+  "memory_update_status": "not_started",
+  "lifecycle_status": "ready_for_worker",
+  "worker_plan": {
+    "selection_basis": "capability_contract",
+    "required_capabilities": [
+      "reasoning",
+      "evidence_synthesis"
+    ],
+    "allowed_tools": [
+      "read_only_analytics",
+      "document_retrieval"
+    ],
+    "compute_route": "standard",
+    "context_refs": [
+      "SRC-USER-001"
+    ],
+    "output_contract": {
+      "mode": "decision-packet",
+      "required_sections": [
+        "result",
+        "evidence",
+        "uncertainty",
+        "next_gate"
+      ]
+    },
+    "authority_ceiling": "recommendation",
+    "prohibited_actions": [
+      "implicit_state_write",
+      "external_action_without_authorization",
+      "authority_expansion"
+    ]
   }
 }

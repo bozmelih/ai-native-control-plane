@@ -1,0 +1,40 @@
+{
+  "schema_version": "4.0.0",
+  "task_id": "LIFECYCLE-CONFLICTING-REQUIRED",
+  "objective": "Block when required context materially conflicts.",
+  "task_class": "answer",
+  "decision_type": "none",
+  "risk_tier": "low",
+  "signals": {},
+  "context_sources": [{
+    "source_id": "SRC-CONFLICT",
+    "kind": "internal_evidence",
+    "freshness": "current",
+    "permitted_use": "decision_support",
+    "summary": "Two approved records disagree.",
+    "relevance_to_decision": "The conflict changes the valid next action.",
+    "decision_change_potential": true,
+    "status": "conflicting"
+  }],
+  "context_plan": {
+    "requirements": [{
+      "requirement_id": "CTX-RESOLVED-DECISION",
+      "description": "Resolved accepted decision.",
+      "priority": "required",
+      "why_needed": "The worker cannot select between competing approved records.",
+      "preferred_source_ids": ["SRC-CONFLICT"],
+      "accepted_statuses": ["available"],
+      "freshness_requirement": "Current and non-conflicting.",
+      "blocking_if_unsatisfied": true,
+      "question": "Which record is the current accepted decision?",
+      "answer_needed": "A human resolution with the authoritative record.",
+      "owner": "human_decision_owner"
+    }],
+    "budget": {"max_items": 1, "max_characters": 4000}
+  },
+  "cognitive_needs": [], "domain_needs": [], "quality_needs": [],
+  "composition_deviations": [], "primitive_budget": 0, "include_synthesis": false,
+  "epistemic_register": [], "uncertainty_register": ["Accepted records conflict."],
+  "worker_requirements": {"required_capabilities": ["reasoning"], "allowed_tools": [], "prohibited_actions": ["implicit_state_write"]},
+  "optional_persona_presets": []
+}

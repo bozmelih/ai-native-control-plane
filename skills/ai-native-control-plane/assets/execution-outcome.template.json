@@ -1,0 +1,48 @@
+{
+  "schema_version": "4.0.0",
+  "task_id": "TASK-JUNO-ADOPTION-001",
+  "completion_status": "completed",
+  "memory_proposal_id": "MP-JUNO-ADOPTION-001",
+  "base_revision": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "verification": {
+    "status": "passed",
+    "evidence_refs": ["SRC-USER-001"]
+  },
+  "learning_candidates": [
+    {
+      "candidate_id": "CHG-CONTEXT-001",
+      "operation": "add",
+      "record_id": "CTX-ADOPTION-001",
+      "target_memory_class": "context",
+      "epistemic_class": "user_confirmed",
+      "content": "Teacher activity-entry adoption is the confirmed workflow outcome under review.",
+      "source_refs": ["SRC-USER-001"],
+      "rationale": "This confirmed objective is reusable context for later adoption work."
+    },
+    {
+      "candidate_id": "CHG-BACKLOG-001",
+      "operation": "add",
+      "record_id": "BACKLOG-ADOPTION-001",
+      "target_memory_class": "backlog",
+      "epistemic_class": "unknown",
+      "content": "Establish the dominant cause of teacher activity-entry non-adoption.",
+      "source_refs": ["SRC-USER-001"],
+      "rationale": "The unresolved evidence gap blocks a durable intervention decision.",
+      "owner": "human_decision_owner",
+      "status": "open",
+      "next_gate": "research"
+    },
+    {
+      "candidate_id": "CHG-WORKING-001",
+      "operation": "add",
+      "record_id": "WORKING-ADOPTION-001",
+      "target_memory_class": "working_memory",
+      "epistemic_class": "analysis",
+      "content": "Candidate barrier hypotheses remain task-scoped until evidence resolves them.",
+      "source_refs": [],
+      "rationale": "Retain temporary reasoning without promoting it to corporate memory.",
+      "expires_at": "2099-12-31T23:59:59Z",
+      "promotion_authorized": false
+    }
+  ]
+}

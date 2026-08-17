@@ -1,0 +1,60 @@
+{
+  "schema_version": "4.0.0",
+  "task_id": "LIFECYCLE-OPTIONAL-MISSING",
+  "objective": "Continue with required context and disclose an optional gap.",
+  "task_class": "answer",
+  "decision_type": "none",
+  "risk_tier": "low",
+  "signals": {},
+  "context_sources": [{
+    "source_id": "SRC-REQUIRED",
+    "kind": "user_confirmed",
+    "freshness": "current",
+    "permitted_use": "decision_support",
+    "summary": "The required objective is confirmed.",
+    "relevance_to_decision": "Defines the answer boundary.",
+    "decision_change_potential": true,
+    "status": "available"
+  }],
+  "context_plan": {
+    "requirements": [
+      {
+        "requirement_id": "CTX-REQUIRED",
+        "description": "Required objective.",
+        "priority": "required",
+        "why_needed": "The answer needs a confirmed objective.",
+        "preferred_source_ids": ["SRC-REQUIRED"],
+        "accepted_statuses": ["available"],
+        "freshness_requirement": "Current.",
+        "blocking_if_unsatisfied": true,
+        "question": "What is the objective?",
+        "answer_needed": "A confirmed objective.",
+        "owner": "human_decision_owner"
+      },
+      {
+        "requirement_id": "CTX-OPTIONAL",
+        "description": "Optional historical example.",
+        "priority": "optional",
+        "why_needed": "It could improve phrasing but cannot change validity.",
+        "preferred_source_ids": ["SRC-OPTIONAL-MISSING"],
+        "accepted_statuses": ["available"],
+        "freshness_requirement": "Any.",
+        "blocking_if_unsatisfied": false,
+        "question": "Is there a historical example?",
+        "answer_needed": "An optional example.",
+        "owner": "human_decision_owner"
+      }
+    ],
+    "budget": {"max_items": 2, "max_characters": 4000}
+  },
+  "cognitive_needs": [],
+  "domain_needs": [],
+  "quality_needs": [],
+  "composition_deviations": [],
+  "primitive_budget": 0,
+  "include_synthesis": false,
+  "epistemic_register": [{"claim_id": "CLM-REQ", "class": "user_confirmed", "statement": "The objective is confirmed.", "source_ids": ["SRC-REQUIRED"]}],
+  "uncertainty_register": [],
+  "worker_requirements": {"required_capabilities": ["reasoning"], "allowed_tools": [], "prohibited_actions": ["implicit_state_write"]},
+  "optional_persona_presets": []
+}
